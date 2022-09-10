@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'loginPage');
 
-//login, register
-Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+Route::middleware(['auth_admin'])->group(function () {
+    //login, register
+    Route::get('/loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
 
-Route::get('/registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+    Route::get('/registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+});
 
 
 Route::middleware(['auth'])->group(function () {
