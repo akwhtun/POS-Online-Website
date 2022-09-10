@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-
+@section('title', 'Category Edit')
 @section('content')
     <!-- MAIN CONTENT-->
     <div class="main-content">
