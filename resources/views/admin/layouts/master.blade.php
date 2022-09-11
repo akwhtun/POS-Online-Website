@@ -132,13 +132,13 @@
                                 </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
+                                        <div class="image" style="width:50px; height: 50px;">
                                             @if (Auth::user()->image == null)
                                                 <img src="{{ asset('admin/profile/default.jpg') }}"
-                                                    class="img-thumbnail rounded-circle" alt="default" />
+                                                    class="img-thumbnail rounded-circle w-100 h-100" alt="default" />
                                             @else
-                                                <img src="{{ asset('admin/images/icon/avatar-01.jpg') }}"
-                                                    class="img-thumbnail rounded-circle" alt="profile" />
+                                                <img src="{{ asset('storage/' . Auth::user()->image) }}"
+                                                    class="img-thumbnail rounded-circle w-100 h-100" alt="profile" />
                                             @endif
                                         </div>
                                         <div class="content">
@@ -146,13 +146,15 @@
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
-                                                <div class="image">
+                                                <div class="image" style="width:70px; height: 70px;">
                                                     @if (Auth::user()->image == null)
                                                         <img src="{{ asset('admin/profile/default.jpg') }}"
-                                                            class="img-thumbnail rounded-circle" alt="default" />
+                                                            class="img-thumbnail w-100 h-100 rounded-circle"
+                                                            alt="default" />
                                                     @else
-                                                        <img src="{{ asset('admin/images/icon/avatar-01.jpg') }}"
-                                                            class="img-thumbnail rounded-circle" alt="profile" />
+                                                        <img src="{{ asset('storage/' . Auth::user()->image) }}"
+                                                            class="img-thumbnail w-100 h-100 rounded-circle"
+                                                            alt="profile" />
                                                     @endif
                                                 </div>
                                                 <div class="content">
