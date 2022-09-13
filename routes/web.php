@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'loginPage');
@@ -40,15 +41,45 @@ Route::middleware(['auth'])->group(function () {
 
         //admin
         Route::prefix('admin')->group(function () {
+            //password change
             Route::get('changePasswordPage', [AdminController::class, 'changePasswordPage'])->name('changePasswordPage');
 
             Route::post('changePassword', [AdminController::class, 'changePassword'])->name('changePassword');
 
+            // profile detail
             Route::get('viewAccountDetail', [AdminController::class, 'viewAccountDetail'])->name('accountDetail');
 
             Route::get('editAccountDetail', [AdminController::class, 'editAccountDetail'])->name('editAccountDetail');
 
             Route::post('updateAccountDetail/{id}', [AdminController::class, 'updateAccountDetail'])->name('updateAccountDetail');
+
+            //admin lists
+            Route::get('viewAdminList', [AdminController::class, 'viewAdminList'])->name('adminLists#view');
+
+            //admin delete
+            Route::get('deleteAdminList/{id}', [AdminController::class, 'deleteAdminList'])->name('adminLists#delete');
+
+            Route::get('editRole/{id}', [AdminController::class, 'editRole'])->name('adminLists#editRole');
+
+            Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('adminLists#updateRole');
+        });
+
+        //pizza crud
+        Route::prefix('pizzas')->group(function () {
+
+            Route::get('list', [ProductController::class, 'list'])->name('pizza#list');
+
+            Route::get('add', [ProductController::class, 'add'])->name('pizza#add');
+
+            Route::post('create', [ProductController::class, 'create'])->name('pizza#create');
+
+            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('pizza#delete');
+
+            Route::get('view/{id}',  [ProductController::class, 'view'])->name('pizza#view');
+
+            Route::get('edit/{id}',  [ProductController::class, 'edit'])->name('pizza#edit');
+
+            Route::post('update',  [ProductController::class, 'update'])->name('pizza#update');
         });
     });
 

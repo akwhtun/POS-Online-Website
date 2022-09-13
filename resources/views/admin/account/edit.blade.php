@@ -17,21 +17,30 @@
                                 @csrf
                                 <div class="image mx-auto" style="width:300px; height: 320px;">
                                     @if (Auth::user()->image == null)
-                                        <img src="{{ asset('admin/profile/default.jpg') }}"
-                                            class="img-thumbnail rounded w-100 h-100" alt="default" />
+                                        @if (Auth::user()->gender == 'Male')
+                                            <td class="text-center">
+                                                <img class="img-thumbnail rounded"
+                                                    src="{{ asset('admin/profile/default_male.jpg') }}">
+                                            </td>
+                                        @else
+                                            <td class="text-center">
+                                                <img class="img-thumbnail rounded"
+                                                    src="{{ asset('admin/profile/default_female.jpg') }}">
+                                            </td>
+                                        @endif
                                     @else
                                         <img src="{{ asset('storage/' . Auth::user()->image) }}"
                                             class="img-thumbnail rounded w-100 h-100" alt="profile" />
                                     @endif
                                     <input type="file" name="image"
-                                        class="form-control mt-2 @error('image')  @enderror">
+                                        class="form-control my-2 @error('image')  @enderror">
                                     @error('image')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-5 mx-auto col-8">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}"
                                         class="form-control @error('name') is-invalid @enderror">

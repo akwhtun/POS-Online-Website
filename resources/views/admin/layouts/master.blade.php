@@ -58,8 +58,12 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="category.html">
+                            <a href="{{ route('category#list') }}">
                                 <i class="fas fa-chart-bar"></i>Category</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pizza#list') }}">
+                                <i class="fas fa-pizza-slice"></i>Pizza</a>
                         </li>
                         {{-- <li>
                             <a href="customerList.html">
@@ -134,8 +138,17 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image" style="width:50px; height: 50px;">
                                             @if (Auth::user()->image == null)
-                                                <img src="{{ asset('admin/profile/default.jpg') }}"
-                                                    class="img-thumbnail rounded-circle w-100 h-100" alt="default" />
+                                                @if (Auth::user()->gender == 'Male')
+                                                    <td class="text-center">
+                                                        <img class="img-thumbnail rounded"
+                                                            src="{{ asset('admin/profile/default_male.jpg') }}">
+                                                    </td>
+                                                @else
+                                                    <td class="text-center">
+                                                        <img class="img-thumbnail rounded"
+                                                            src="{{ asset('admin/profile/default_female.jpg') }}">
+                                                    </td>
+                                                @endif
                                             @else
                                                 <img src="{{ asset('storage/' . Auth::user()->image) }}"
                                                     class="img-thumbnail rounded-circle w-100 h-100" alt="profile" />
@@ -148,9 +161,17 @@
                                             <div class="info clearfix">
                                                 <div class="image" style="width:70px; height: 70px;">
                                                     @if (Auth::user()->image == null)
-                                                        <img src="{{ asset('admin/profile/default.jpg') }}"
-                                                            class="img-thumbnail w-100 h-100 rounded-circle"
-                                                            alt="default" />
+                                                        @if (Auth::user()->gender == 'Male')
+                                                            <td class="text-center">
+                                                                <img class="img-thumbnail rounded"
+                                                                    src="{{ asset('admin/profile/default_male.jpg') }}">
+                                                            </td>
+                                                        @else
+                                                            <td class="text-center">
+                                                                <img class="img-thumbnail rounded"
+                                                                    src="{{ asset('admin/profile/default_female.jpg') }}">
+                                                            </td>
+                                                        @endif
                                                     @else
                                                         <img src="{{ asset('storage/' . Auth::user()->image) }}"
                                                             class="img-thumbnail w-100 h-100 rounded-circle"
@@ -174,6 +195,12 @@
                                                 <div class="account-dropdown__item">
                                                     <a href="{{ route('changePasswordPage') }}">
                                                         <i class="fas fa-key"></i>Change Password</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{ route('adminLists#view') }}">
+                                                        <i class="fas fa-users"></i>Admin Lists</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">

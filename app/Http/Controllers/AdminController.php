@@ -68,6 +68,50 @@ class AdminController extends Controller
         return redirect()->route('accountDetail')->with(['updateSuccess' => '✔ Update Success.']);
     }
 
+    //view admin list
+    public function viewAdminList()
+    {
+        $admins = User::when(request('searchKey'), function ($query) {
+            $query->orwhere('name', 'like', '%' . request('searchKey') . '%')
+                ->orwhere('email', 'like', '%' . request('searchKey') . '%')
+                ->orwhere('phone', 'like', '%' . request('searchKey') . '%')
+                ->orwhere('address', 'like', '%' . request('searchKey') . '%');
+        })
+            ->where('role', 'admin')->paginate(4);
+        $admins->appends(request()->all());
+        return view('admin.account.list', compact('admins'));
+    }
+
+    //delete admin list
+    public function deleteAdminList($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->route('adminLists#view')->with(['deleteAdminSuccess' => 'Delete Success!']);
+    }
+
+    //edit role
+    public function editRole($id)
+    {
+        $editData = User::where('id', $id)->first();
+        return view('admin.account.editRole', compact('editData'));
+    }
+
+    //update role
+    public function updateRole($id, Request $request)
+    {
+        $changeData = $this->getRole($request);
+        User::where('id', $id)->update($changeData);
+        return redirect()->route('adminLists#view');
+    }
+
+    //get change role
+    private function getRole($request)
+    {
+        return [
+            'role' => $request->role,
+        ];
+    }
+
     //get account update data
     private function getData($request)
     {
