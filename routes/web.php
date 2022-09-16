@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'loginPage');
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('adminLists#updateRole');
         });
 
+
         //pizza crud
         Route::prefix('pizzas')->group(function () {
 
@@ -86,9 +88,16 @@ Route::middleware(['auth'])->group(function () {
     //User Home
     Route::middleware(['auth_user'])->group(function () {
         Route::prefix('user')->group(function () {
-            Route::get('home', function () {
-                return view('user.home');
-            })->name('user#home');
+            Route::get('homePage', [UserController::class, 'homePage'])->name('user#home');
+        });
+        //user
+        Route::prefix('user')->group(function () {
+            // profile detail
+            Route::get('viewAccountDetail', [UserController::class, 'viewAccountDetail'])->name('user#accountDetail');
+
+            Route::get('editAccountDetail', [UserController::class, 'editAccountDetail'])->name('user#editAccountDetail');
+
+            Route::post('updateAccountDetail/{id}', [UserController::class, 'updateAccountDetail'])->name('user#updateAccountDetail');
         });
     });
 });
