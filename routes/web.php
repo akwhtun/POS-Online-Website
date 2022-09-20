@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'loginPage');
@@ -87,9 +89,19 @@ Route::middleware(['auth'])->group(function () {
 
     //User Home
     Route::middleware(['auth_user'])->group(function () {
+
+        //user page
         Route::prefix('user')->group(function () {
             Route::get('homePage', [UserController::class, 'homePage'])->name('user#home');
+
+            Route::get('filter/{id}', [UserController::class, 'filter'])->name('user#filter');
         });
+
+        //password change
+        Route::get('changePasswordPage', [UserController::class, 'changePasswordPage'])->name('user#changePasswordPage');
+
+        Route::post('changePassword', [UserController::class, 'changePassword'])->name('user#changePassword');
+
         //user
         Route::prefix('user')->group(function () {
             // profile detail
@@ -98,6 +110,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('editAccountDetail', [UserController::class, 'editAccountDetail'])->name('user#editAccountDetail');
 
             Route::post('updateAccountDetail/{id}', [UserController::class, 'updateAccountDetail'])->name('user#updateAccountDetail');
+
+
+            Route::prefix('ajax')->group(function () {
+                Route::get('pizzas/getList', [AjaxController::class, 'getList']);
+            });
         });
     });
 });

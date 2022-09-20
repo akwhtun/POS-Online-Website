@@ -96,11 +96,6 @@
                                 <i class="fas fa-user-circle text-warning"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle"
                                     style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-warning"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle"
-                                    style="padding-bottom: 2px;">0</span>
                             </a> --}}
                             <a href="#" class="text-decoration-none d-flex align-items-center">
                                 <div class="">
@@ -132,24 +127,24 @@
                                     <i class="fas fa-angle-down fs-4 text-warning" style="cursor: pointer"></i>
                                 </p>
                                 <div class="dropdown-menu  m-0 p-0" aria-labelledby="triggerId" style="width:210px;">
-                                    <div class="text-center">
+                                    <div class="text-center py-2 border border-0 border-bottom">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
                                                 <td class="text-center">
-                                                    <img class="img-thumbnail rounded-circle"
+                                                    <img class="img-thumbnail rounded"
                                                         src="{{ asset('admin/profile/default_male.jpg') }}"
                                                         style="width:90px; height:90px">
                                                 </td>
                                             @else
                                                 <td class="text-center">
-                                                    <img class="img-thumbnail rounded-circle"
+                                                    <img class="img-thumbnail rounded"
                                                         src="{{ asset('admin/profile/default_female.jpg') }}"
                                                         style="width:90px; height:90px">
                                                 </td>
                                             @endif
                                         @else
                                             <img src="{{ asset('storage/' . Auth::user()->image) }}"
-                                                style="width:90px; height:90px" class="img-thumbnail  w-100 h-100"
+                                                style="width:70px; height:70px" class="img-thumbnail rounded border"
                                                 alt="profile" />
                                         @endif
                                     </div>
@@ -157,7 +152,8 @@
                                         href="{{ route('user#accountDetail') }}">
                                         <i class="text-warning fs-5 fas fa-user me-2"></i>
                                         <span style="font-size: 18px;">Account</span></a>
-                                    <a class="dropdown-item mt-1 py-2 border border-0 border-bottom" href="#">
+                                    <a class="dropdown-item mt-1 py-2 border border-0 border-bottom"
+                                        href="{{ route('user#changePasswordPage') }}">
                                         <i class="text-warning fs-5 fas fa-key me-2"></i>
                                         <span style="font-size: 18px;"> Change Password</span></a>
                                     <div class="">
@@ -172,13 +168,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="text-warning">|</span>
+                            {{-- <span class="text-warning">|</span>
                             <form action="{{ route('logout') }}" method="POST" class="d-inline ms-1">
                                 @csrf
                                 <button style="submit" class="btn btn-sm btn-outline-warning mx-1"
                                     style="font-size:17px;"><i class="fas fa-power-off"></i>
                                     &nbsp;Logout</button>
-                            </form>
+                            </form> --}}
+                            {{-- <span class="text-warning">|</span> --}}
+                            <a href="" class="btn px-0 ml-3 me-4">
+                                <i class="fas fs-5 fa-shopping-cart text-warning"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle"
+                                    style="padding-bottom: 2px;">0</span>
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -306,5 +308,7 @@
     {{-- jQuery --}}
     <script src="{{ asset('jQuery/jquery.js') }}"></script>
 </body>
+
+@yield('ajaxContent');
 
 </html>

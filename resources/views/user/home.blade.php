@@ -15,10 +15,15 @@
                 </h6>
                 <div class="bg-light p-4 mb-30">
                     <form>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <a href="{{ route('user#home') }}" class="text-decoration-none text-dark">All</a>
+                        </div>
                         @foreach ($categories as $category)
                             <div
                                 class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <span class="font-weight-normal">{{ $category->name }}</span>
+                                <a href="{{ route('user#filter', $category->id) }}" class="text-decoration-none text-dark">
+                                    <span class="font-weight-normal">{{ $category->name }}</span>
+                                </a>
                             </div>
                         @endforeach
                     </form>
@@ -130,15 +135,20 @@
                             </div>
                             <div class="ml-2">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle"
+                                    {{-- <button type="button" class="btn btn-sm btn-light dropdown-toggle"
                                         data-bs-toggle="dropdown">Sorting</button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="#">Latest</a>
-                                        <a class="dropdown-item" href="#">Popularity</a>
+                                        <a class="dropdown-item" href="#">Newest</a>
                                         <a class="dropdown-item" href="#">Best Rating</a>
-                                    </div>
+                                    </div> --}}
+                                    <select id="sorting" class="form-select">
+                                        <option value="">Choose Option</option>
+                                        <option value="latest">Latest</option>
+                                        <option value="newest">Newest</option>
+                                    </select>
                                 </div>
-                                <div class="btn-group ml-2">
+                                {{-- <div class="btn-group ml-2">
                                     <button type="button" class="btn btn-sm btn-light dropdown-toggle"
                                         data-bs-toggle="dropdown">Showing</button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -146,16 +156,84 @@
                                         <a class="dropdown-item" href="#">20</a>
                                         <a class="dropdown-item" href="#">30</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
-                    @foreach ($pizzas as $pizza)
-                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                            <div class="product-item bg-light mb-4">
+                    <div id="list" class="row d-flex justify-content-around flex-wrap">
+                        @if (count($pizzas) != 0)
+                            @foreach ($pizzas as $pizza)
+                                <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                                    <div class="product-item bg-light mb-4">
+                                        <div class="product-img position-relative overflow-hidden">
+                                            <img class="img-fluid w-100 rounded" style="height: 250px;"
+                                                src="{{ asset('storage/pizza/' . $pizza->image) }}" alt="">
+                                            <div class="product-action">
+                                                <a class="btn btn-outline-dark btn-square" href=""><i
+                                                        class="fa fa-shopping-cart"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href=""><i
+                                                        class="far fa-heart"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href=""><i
+                                                        class="fa fa-sync-alt"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href=""><i
+                                                        class="fa fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="text-center py-4">
+                                            <a class="h6 text-decoration-none text-truncate"
+                                                href="">{{ $pizza->name }}</a>
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <h5>{{ $pizza->price }} kyats</h5>
+                                                {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
+                                            </div>
+                                            {{-- <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                    </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <h3 class="text-center text-danger shadow-sm mt-3 py-3 col-7 mx-auto">There is no pizza <i
+                                    class="fas fa-pizza-slice"></i></h3>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+@endsection
+
+
+@section('ajaxContent')
+    <script>
+        $(document).ready(function() {
+            $('#sorting').on('change', function() {
+                $option = $('#sorting').val();
+
+                if ($option == 'newest') {
+                    $.ajax({
+                        type: 'get',
+                        url: 'http://localhost:8000/user/ajax/pizzas/getList',
+                        data: {
+                            'status': 'desc'
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            // console.log(response);
+                            $list = '';
+                            for ($i = 0; $i < response.length; $i++) {
+                                $list += `
+                                <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                                  <div class="product-item bg-light mb-4">
                                 <div class="product-img position-relative overflow-hidden">
-                                    <img class="img-fluid w-100 rounded" style="height: 240px;"
-                                        src="{{ asset('storage/pizza/' . $pizza->image) }}" alt="">
+                                    <img class="img-fluid w-100 rounded" style="height: 250px;"
+                                        src="{{ asset('storage/pizza/${response[$i].image}') }}" alt="">
                                     <div class="product-action">
                                         <a class="btn btn-outline-dark btn-square" href=""><i
                                                 class="fa fa-shopping-cart"></i></a>
@@ -168,9 +246,9 @@
                                     </div>
                                 </div>
                                 <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none text-truncate" href="">{{ $pizza->name }}</a>
+                                    <a class="h6 text-decoration-none text-truncate" href=""> ${response[$i] . name} </a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
-                                        <h5>{{ $pizza->price }} kyats</h5>
+                                        <h5> ${response[$i] . price}  kyats</h5>
                                         {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
                                     </div>
                                     {{-- <div class="d-flex align-items-center justify-content-center mb-1">
@@ -182,11 +260,66 @@
                                     </div> --}}
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <!-- Shop Product End -->
-        </div>
-    </div>
+                            </div>
+                                `;
+                            }
+                            $('#list').html($list);
+
+                        }
+                    });
+                } else if ($option == 'latest') {
+                    $.ajax({
+                        type: 'get',
+                        url: 'http://localhost:8000/user/ajax/pizzas/getList',
+                        data: {
+                            'status': 'asc'
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            $list = '';
+                            for ($i = 0; $i < response.length; $i++) {
+                                $list += `
+                                <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                                  <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100 rounded" style="height: 250px;"
+                                        src="{{ asset('storage/pizza/${response[$i].image}') }}" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="far fa-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa fa-sync-alt"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href=""> ${response[$i] . name} </a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5> ${response[$i] . price}  kyats</h5>
+                                        {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
+                                    </div>
+                                    {{-- <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                        <small class="fa fa-star text-warning mr-1"></small>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            </div>
+                                `;
+                            }
+                            $('#list').html($list);
+
+                        }
+
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
