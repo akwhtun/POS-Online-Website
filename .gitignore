@@ -6,6 +6,7 @@
 /public/fontawesome
 /public/css
 /public/js
+/public/owl
 /storage/*.key
 /vendor
 .env

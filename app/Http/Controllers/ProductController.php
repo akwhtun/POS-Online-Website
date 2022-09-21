@@ -89,6 +89,14 @@ class ProductController extends Controller
         return redirect()->route('pizza#list')->with(['pizzaUpdateSuccess' => 'Update Success!']);
     }
 
+    //pizza detail
+    public function viewDetail($pizzaId)
+    {
+        $pizza = Product::where('id', $pizzaId)->first();
+        $pizzasList = Product::get();
+        return view('user.main.detail', compact('pizza', 'pizzasList'));
+    }
+
     //get data
     private function getPizzaData($request)
     {

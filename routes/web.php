@@ -97,6 +97,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('filter/{id}', [UserController::class, 'filter'])->name('user#filter');
         });
 
+        //pizza detail
+        Route::prefix('pizzas')->group(function () {
+            Route::get('detail/{id}', [ProductController::class, 'viewDetail'])->name('pizza#detail');
+        });
+
         //password change
         Route::get('changePasswordPage', [UserController::class, 'changePasswordPage'])->name('user#changePasswordPage');
 

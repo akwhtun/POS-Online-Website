@@ -20,7 +20,10 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('user/lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('owl/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('owl/owl.theme.default.min.css') }}">
+    {{-- <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.css') }}" rel="stylesheet"> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
@@ -52,7 +55,7 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid bg-dark mb-30">
+    <div class="container-fluid bg-dark mb-30 sticky-top">
         <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn d-flex align-items-center justify-content-between mt-1 w-100" href="#"
@@ -289,11 +292,15 @@
     <a href="#" class="btn btn-warning back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
+    {{-- jQuery --}}
+    <script src="{{ asset('jQuery/jquery.js') }}"></script>
     <!-- JavaScript Libraries -->
-    {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('owl/owl.carousel.min.js') }}"></script>
+    {{-- <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('user/lib/owlcarousel/owl.carousel.js') }}"></script> --}}
 
     <!-- Contact Javascript File -->
     <script src="{{ asset('user/mail/jqBootstrapValidation.min.js') }}"></script>
@@ -304,9 +311,6 @@
 
     {{-- Bootstrap Js --}}
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-
-    {{-- jQuery --}}
-    <script src="{{ asset('jQuery/jquery.js') }}"></script>
 </body>
 
 @yield('ajaxContent');
