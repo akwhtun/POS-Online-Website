@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -94,7 +96,8 @@ class ProductController extends Controller
     {
         $pizza = Product::where('id', $pizzaId)->first();
         $pizzasList = Product::get();
-        return view('user.main.detail', compact('pizza', 'pizzasList'));
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.main.detail', compact('pizza', 'pizzasList', 'cart'));
     }
 
     //get data

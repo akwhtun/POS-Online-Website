@@ -90,8 +90,8 @@
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark  py-lg-0 px-0 d-f">
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-1">
-                            <a href="shop.html" class="nav-item nav-link active">Home</a>
-                            <a href="cart.html" class="nav-item nav-link">My Cart</a>
+                            <a href="{{ route('user#home') }}" class="nav-item nav-link active">Home</a>
+                            {{-- <a href="cart.html" class="nav-item nav-link">My Cart</a> --}}
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-flex align-items-center">
@@ -179,11 +179,7 @@
                                     &nbsp;Logout</button>
                             </form> --}}
                             {{-- <span class="text-warning">|</span> --}}
-                            <a href="" class="btn px-0 ml-3 me-4">
-                                <i class="fas fs-5 fa-shopping-cart text-warning"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle"
-                                    style="padding-bottom: 2px;">0</span>
-                            </a>
+                            @yield('cart')
                         </div>
                     </div>
                 </nav>
@@ -314,5 +310,7 @@
 </body>
 
 @yield('ajaxContent');
+@yield('carousel');
+@yield('script')
 
 </html>

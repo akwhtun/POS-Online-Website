@@ -1,5 +1,14 @@
 @extends('user.layouts.master')
 
+
+@section('cart')
+    <a href="" class="btn px-0 ml-3 me-4">
+        <i class="fas fs-5 fa-shopping-cart text-warning"></i>
+        <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
+            {{ count($cart) }}
+        </span>
+    </a>
+@endsection
 @section('content')
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
@@ -9,7 +18,7 @@
             <div class="col-lg-5 mb-30">
                 <div id="product-carousel">
                     <div class="bg-light">
-                        <div>
+                        <div style="height:490px">
                             <img class="w-100 h-100 img-thumbnail rounded"
                                 src="{{ asset('storage/pizza/' . $pizza->image) }}" alt="Image">
                         </div>
@@ -17,6 +26,8 @@
                 </div>
             </div>
 
+            <input type="hidden" value="{{ Auth::user()->id }}" id="userId">
+            <input type="hidden" value="{{ $pizza->id }}" id="pizzaId">
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
                     <h3>{{ $pizza->name }}</h3>
@@ -41,14 +52,16 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                            <input type="text" class="form-control bg-light text-dark border-0 text-center"
+                                id="orderCount" value="1" style="font-weight: bold">
                             <div class="input-group-btn">
                                 <button class="btn btn-warning btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-warning px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <button type="button" class="btn btn-warning px-3" id="addCartBtn"><i
+                                class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
                     </div>
                     <div class="d-flex pt-2">
@@ -88,14 +101,18 @@
                                 <img class="img-fluid w-100" src="{{ asset('storage/pizza/' . $pizzaList->image) }}"
                                     alt="" style="height: 220px">
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
+                                    <a class="btn btn-outline-dark btn-square" id="addCartBtn"><i
                                             class="fa fa-shopping-cart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
+                                    {{-- <a class="btn btn-outline-dark btn-square" href=""><i
                                             class="far fa-heart"></i></a>
                                     <a class="btn btn-outline-dark btn-square" href=""><i
                                             class="fa fa-sync-alt"></i></a>
                                     <a class="btn btn-outline-dark btn-square" href=""><i
-                                            class="fa fa-search"></i></a>
+                                            class="fa fa-search"></i></a> --}}
+                                    <a href="{{ route('pizza#detail', $pizzaList->id) }}"
+                                        class="btn btn-outline-dark btn-square">
+                                        <i class="fas fa-info"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="text-center py-4">
@@ -124,6 +141,35 @@
 @endsection
 
 @section('ajaxContent')
+    <script>
+        $(document).ready(function() {
+            $('#addCartBtn').on('click', function() {
+                $orderCount = $('#orderCount').val();
+                $userId = $('#userId').val();
+                $pizzaId = $('#pizzaId').val();
+                $data = {
+                    'orderCount': $orderCount,
+                    'userId': $userId,
+                    'pizzaId': $pizzaId,
+                };
+
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8000/user/ajax/pizzas/orderPizza',
+                    data: $data,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status = 'success') {
+                            window.location.href = 'http://localhost:8000/user/homePage';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+@endsection
+
+@section('carousel')
     <script>
         $('.owl-carousel').owlCarousel({
             loop: true,

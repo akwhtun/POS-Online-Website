@@ -1,10 +1,19 @@
 @extends('user.layouts.master')
 
+@section('cart')
+    <a href="{{ route('cart#orderList') }}" class="btn px-0 ml-3 me-4" id="cartItem">
+        <i class="fas fs-5 fa-shopping-cart text-warning"></i>
+        <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
+            {{ count($cart) }}
+        </span>
+    </a>
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="row px-xl-5 mt-3">
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-4">
+
                 <!-- Price Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-light pr-3">Filter by
                         category</span></h5>

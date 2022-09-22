@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\UserController;
@@ -118,7 +119,13 @@ Route::middleware(['auth'])->group(function () {
 
 
             Route::prefix('ajax')->group(function () {
-                Route::get('pizzas/getList', [AjaxController::class, 'getList']);
+                Route::get('pizzas/getList', [AjaxController::class, 'getList'])->name('ajaxPizza#list');
+
+                Route::get('pizzas/orderPizza', [AjaxController::class, 'orderPizza'])->name('ajaxPizza#order');
+            });
+
+            Route::prefix('cart')->group(function () {
+                Route::get('getOrderList', [CartController::class, 'orderList'])->name('cart#orderList');
             });
         });
     });

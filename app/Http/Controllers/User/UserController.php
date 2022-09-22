@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -19,7 +20,8 @@ class UserController extends Controller
     {
         $pizzas = Product::orderBy('id', 'desc')->get();
         $categories = Category::get();
-        return view('user.home', compact('categories', 'pizzas'));
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.home', compact('categories', 'pizzas', 'cart'));
     }
 
     //filter category
@@ -27,7 +29,8 @@ class UserController extends Controller
     {
         $pizzas = Product::where('category_id', $categoryId)->orderBy('id', 'desc')->get();
         $categories = Category::get();
-        return view('user.home', compact('categories', 'pizzas'));
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.home', compact('categories', 'pizzas', 'cart'));
     }
 
     //change password page
