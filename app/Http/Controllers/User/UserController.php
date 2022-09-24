@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class UserController extends Controller
         $pizzas = Product::orderBy('id', 'desc')->get();
         $categories = Category::get();
         $cart = Cart::where('user_id', Auth::user()->id)->get();
-        return view('user.home', compact('categories', 'pizzas', 'cart'));
+        $history = Order::where('user_id', Auth::user()->id)->get();
+        return view('user.home', compact('categories', 'pizzas', 'cart', 'history'));
     }
 
     //filter category

@@ -112,17 +112,27 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail/{id}', [ProductController::class, 'viewDetail'])->name('pizza#detail');
         });
 
-        Route::get('pizzas/getList', [AjaxController::class, 'getList'])->name('ajaxPizza#list');
+        //ajax
+        Route::prefix('ajax')->group(function () {
+            Route::get('pizzas/getList', [AjaxController::class, 'getList'])->name('ajaxPizza#list');
 
-        Route::get('pizzas/orderPizza', [AjaxController::class, 'orderPizza'])->name('ajaxPizza#order');
+            Route::get('pizzas/orderPizza', [AjaxController::class, 'orderPizza'])->name('ajaxPizza#order');
 
-        Route::get('order', [AjaxController::class, 'orderItemList'])->name('ajaxPizza#orderItem');
+            Route::get('order', [AjaxController::class, 'orderItemList'])->name('ajaxPizza#orderItem');
 
-        Route::get('orderSuccess', [AjaxController::class, 'orderSuccess'])->name('ajaxPizza#orderSuccess');
-    });
+            Route::get('orderSuccess', [AjaxController::class, 'orderSuccess'])->name('ajaxPizza#orderSuccess');
 
-    Route::prefix('cart')->group(function () {
-        Route::get('getOrderList', [CartController::class, 'orderList'])->name('cart#orderList');
+            Route::get('cart/clear', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
+
+            Route::get('cartList/remove', [AjaxController::class, 'listRemove'])->name('ajax#listRemove');
+        });
+
+        //cart
+        Route::prefix('cart')->group(function () {
+            Route::get('getOrderList', [CartController::class, 'orderList'])->name('cart#orderList');
+
+            Route::get('getHistoryList', [CartController::class, 'historyList'])->name('cart#history');
+        });
     });
 });
 
@@ -141,7 +151,6 @@ Route::middleware(['auth'])->group(function () {
 
 //         //ajax
 
-//         Route::prefix('ajax')->group(function () {
-//         });
+//
 //     });
 // });

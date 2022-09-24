@@ -68,6 +68,28 @@ class AjaxController extends Controller
         return view('user.main.orderSuccess', compact('cart'));
     }
 
+    //clearCart
+    public function clearCart()
+    {
+        Cart::where('user_id', Auth::user()->id)->delete();
+        $response = [
+            'message' => 'clear success',
+            'status' => 'true'
+        ];
+        return response()->json($response, 200);
+    }
+
+    //listRemove
+    public function listRemove(Request $request)
+    {
+        Cart::where('id', $request->id)->delete();
+        $response = [
+            'message' => 'clear success',
+            'status' => 'true'
+        ];
+        return response()->json($response, 200);
+    }
+
     //get order pizza
     private function getData($request)
     {

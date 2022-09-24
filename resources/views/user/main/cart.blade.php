@@ -30,6 +30,8 @@
                                         src="{{ asset('storage/pizza/' . $l->image) }}" alt="" style="width: 50px;">
                                     {{ $l->name }}
 
+
+                                    <input type="hidden" class="clearId" value="{{ $l->id }}">
                                     <input type="hidden" class="userId" value="{{ $l->user_id }}">
                                     <input type="hidden" class="productId" value="{{ $l->product_id }}">
                                 </td>
@@ -86,6 +88,8 @@
                         </div>
                         <button class="btn btn-block btn-warning font-weight-bold my-3 py-3 orderBtn">Proceed To
                             Checkout</button>
+                        <button class="btn btn-block btn-dark font-weight-bold my-3 py-3 clearBtn">Clear
+                            Cart</button>
                     </div>
                 </div>
             </div>
@@ -136,6 +140,60 @@
                     }
                 })
             })
+
+            $('.removeBtn').on('click', function() {
+                $clearId = $(this).closest('.orderItem').find('.clearId').val();
+                $(this).closest('.orderItem').remove();
+                $count = $('.cartCount').html();
+                $newCount = Number($count) - 1;
+                $('.cartCount').html($newCount);
+
+                $subTotalPrice = $('.subTotal');
+                $subTot = $('.subTot');
+                $subTotal = 0;
+                $('.dataRow tr').each(function(i, r) {
+                    $subTotal += Number($(r).find('.totalPrice').html().replace('kyats', ''));
+                });
+                $subTotalPrice.html($subTotal);
+                $subTot.html($subTotal + 3000 + 'kyats');
+
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8000/user/ajax/cartList/remove',
+                    data: {
+                        'id': $clearId
+                    },
+                    dataType: 'json',
+                    // success: function(response) {
+                    //     if (response.status = 'true') {
+
+                    //         window.location.href =
+                    //             'http://localhost:8000/user/cart/getOrderList';
+
+                    //     }
+                    // }
+                })
+            });
+
+            $('.clearBtn').on('click', function() {
+                $allList = $('.dataRow tr');
+                // $allList.remove();
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8000/user/ajax/cart/clear',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status = 'true') {
+
+                            window.location.href =
+                                'http://localhost:8000/user/cart/getOrderList';
+
+                        }
+                    }
+                })
+
+            })
+
         })
     </script>
 @endsection

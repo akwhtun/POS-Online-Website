@@ -180,6 +180,7 @@
                             </form> --}}
                             {{-- <span class="text-warning">|</span> --}}
                             @yield('cart')
+                            {{-- @yield('history') --}}
                         </div>
                     </div>
                 </nav>

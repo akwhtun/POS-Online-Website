@@ -8,6 +8,7 @@
         </span>
     </a>
 @endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row px-xl-5 mt-3">
@@ -139,8 +140,15 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                                <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
-                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
+                                {{-- <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
+                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button> --}}
+                                <a href="{{ route('cart#history') }}" class="btn btn-dark text-white position-relative">
+                                    History <i class="fas fa-history"></i>
+                                    <span
+                                        class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill">
+                                        {{ count($history) }}
+                                    </span>
+                                </a>
                             </div>
                             <div class="ml-2">
                                 <div class="btn-group">
@@ -252,7 +260,7 @@
                                 <div class="product-action">
                                     <a class="btn btn-outline-dark btn-square" id="addCartBtn"><i
                                             class="fa fa-shopping-cart"></i></a>
-                                      <a href="{{ url('pizzas/detail/${response[$i].id}') }}"
+                                      <a href="{{ url('user/pizzas/detail/${response[$i].id}') }}"
                                                     class="btn btn-outline-dark btn-square">
                                                     <i class="fas fa-info"></i>
                                                 </a>
@@ -301,7 +309,7 @@
                                 <div class="product-action">
                                     <a class="btn btn-outline-dark btn-square" id="addCartBtn"><i
                                             class="fa fa-shopping-cart"></i></a>
-                                    <a href="{{ url('pizzas/detail/${response[$i].id}') }}"
+                                    <a href="{{ url('user/pizzas/detail/${response[$i].id}') }}"
                                                     class="btn btn-outline-dark btn-square">
                                                     <i class="fas fa-info"></i>
                                                 </a>
