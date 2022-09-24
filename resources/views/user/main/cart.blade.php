@@ -2,7 +2,7 @@
 @section('cart')
     <a href="{{ route('cart#orderList') }}" class="btn px-0 ml-3 me-4" id="cartItem">
         <i class="fas fs-5 fa-shopping-cart text-warning"></i>
-        <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
+        <span class="badge text-light border border-light rounded-circle cartCount" style="padding-bottom: 2px;">
             {{ count($cart) }}
         </span>
     </a>
@@ -22,13 +22,16 @@
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody class="align-middle">
+                    <tbody class="align-middle dataRow">
                         @foreach ($list as $l)
                             <tr class="orderItem">
                                 <td class="align-middle d-flex flex-wrap">
                                     <img class="ms-5 me-3 img-thumbnail rounded"
                                         src="{{ asset('storage/pizza/' . $l->image) }}" alt="" style="width: 50px;">
                                     {{ $l->name }}
+
+                                    <input type="hidden" class="userId" value="{{ $l->user_id }}">
+                                    <input type="hidden" class="productId" value="{{ $l->product_id }}">
                                 </td>
                                 <td class="align-middle">
                                     <span class="orderPrice">{{ $l->price }}</span> kyats
@@ -50,7 +53,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="align-middle totalPrice">{{ $l->price * $l->qty }} kyats</td>
+                                <td class="align-middle totalPrice px-2">{{ $l->price * $l->qty }} kyats</td>
                                 <td class="align-middle removeBtn"><button class="btn btn-sm btn-danger"><i
                                             class="fa fa-times"></i></button></td>
                             </tr>
@@ -66,7 +69,7 @@
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
                             <h6>
-                                <p class="me-2 d-inline">{{ $totalPrice }} </p>kyats
+                                <p class="me-2 d-inline subTotal">{{ $totalPrice }} </p>kyats
                             </h6>
                         </div>
                         <div class="d-flex justify-content-between">
@@ -79,9 +82,10 @@
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Total</h5>
-                            <h5 class="ms-2"> {{ $totalPrice + 3000 }} kyats</h5>
+                            <h5 class="ms-2 subTot"> {{ $totalPrice + 3000 }} kyats</h5>
                         </div>
-                        <button class="btn btn-block btn-warning font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-warning font-weight-bold my-3 py-3 orderBtn">Proceed To
+                            Checkout</button>
                     </div>
                 </div>
             </div>
@@ -95,38 +99,46 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 @endsection
 
-@section('script')
+@section('ajaxContent')
     <script>
         $(document).ready(function() {
-            $('.btn-plus').on('click', function() {
-                $orderItem = $(this).closest('.orderItem');
-                $orderQty = $orderItem.find('.orderQty').val();
-                $orderPrice = $orderItem.find('.orderPrice').html();
-                $totalPrice = $orderItem.find('.totalPrice');
+            $('.orderBtn').on('click', function() {
 
-                $totalPrice.html($orderPrice * $orderQty + ' kyats');
+                $orderList = [];
+                $random = Math.floor(Math.random() * 100001);
+                $('.dataRow tr').each(function(i, r) {
+                    $userId = $(r).find('.userId').val();
+                    $productId = $(r).find('.productId').val();
+                    $qty = $(r).find('.orderQty').val();
+                    $totalPrice = $(r).find('.totalPrice').text().replace('kyats', '');
+                    $orderCode = 'pos' + $userId + $random;
+                    $orderList.push({
+                        'user_id': $userId,
+                        'product_id': $productId,
+                        'qty': $qty,
+                        'total': $totalPrice,
+                        'order_code': $orderCode
+                    });
+                })
+                // console.log(Object.assign({}, $orderList));
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8000/user/ajax/order',
+                    data: Object.assign({}, $orderList),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status = 'true') {
 
-                if ($orderQty > 0) {
-                    $orderItem.css('textDecoration', 'none');
-                }
-            });
+                            window.location.href =
+                                'http://localhost:8000/user/ajax/orderSuccess';
 
-            $('.btn-minus').on('click', function() {
-                $orderItem = $(this).closest('.orderItem');
-                $orderQty = $orderItem.find('.orderQty').val();
-                $orderPrice = $orderItem.find('.orderPrice').html();
-                $totalPrice = $orderItem.find('.totalPrice');
-
-                $totalPrice.html($orderPrice * $orderQty + ' kyats');
-
-                if ($orderQty == 0) {
-                    $orderItem.css('textDecoration', 'line-through');
-                }
-            });
-
-            $('.removeBtn').on('click', function() {
-                $(this).closest('.orderItem').remove();
-            });
-        });
+                        }
+                    }
+                })
+            })
+        })
     </script>
+@endsection
+@section('script')
+    <script src="{{ asset('js/cart.js') }}"></script>
 @endsection

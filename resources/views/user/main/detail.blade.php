@@ -1,18 +1,19 @@
 @extends('user.layouts.master')
 
-
 @section('cart')
-    <a href="" class="btn px-0 ml-3 me-4">
+    <a href="{{ route('cart#orderList') }}" class="btn px-0 ml-3 me-4" id="cartItem">
         <i class="fas fs-5 fa-shopping-cart text-warning"></i>
         <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
             {{ count($cart) }}
         </span>
     </a>
 @endsection
+
 @section('content')
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
-        <p class="fs-5 ms-5" onclick="history.back()" style="cursor: pointer"> <i class="fas fa-arrow-circle-left me-1"></i>Back
+        <p class="fs-5 ms-5" onclick="history.back()" style="cursor: pointer"> <i
+                class="fas fa-arrow-circle-left me-1"></i>Back
         </p>
         <div class="row px-xl-5">
             <div class="col-lg-5 mb-30">
@@ -93,15 +94,17 @@
         <h2 class="bg-light section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="pr-3">You
                 May Also Like</span></h2>
         <div class="row px-xl-5">
-            <div class="col">
-                <div class="owl-carousel owl-theme d-flex justify-content-around">
+            {{-- <input type="hidden" value="{{ Auth::user()->id }}" id="userId"> --}}
+            <div class="col" id="list">
+                <div class="owl-carousel owl-theme d-flex justify-content-around ">
                     @foreach ($pizzasList as $pizzaList)
-                        <div class="item product-item bg-light ">
+                        <div class="item product-item bg-light pizzaList ">
+                            <input type="hidden" id="pizzaAnotherId" value="{{ $pizzaList->id }}">
                             <div class="product-img position-relative overflow-hidden w-100">
                                 <img class="img-fluid w-100" src="{{ asset('storage/pizza/' . $pizzaList->image) }}"
                                     alt="" style="height: 220px">
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" id="addCartBtn"><i
+                                    <a class="btn btn-outline-dark btn-square" id="addCartAnotherBtn"><i
                                             class="fa fa-shopping-cart"></i></a>
                                     {{-- <a class="btn btn-outline-dark btn-square" href=""><i
                                             class="far fa-heart"></i></a>
@@ -188,6 +191,33 @@
                     items: 5
                 }
             }
+        });
+    </script>
+@endsection
+
+@section('script')
+    <script>
+        $('#list').delegate('#addCartAnotherBtn', 'click', function() {
+            $orderCount = 1;
+            $userId = $('#userId').val();
+            $pizzaId = $(this).closest('.pizzaList').find('#pizzaAnotherId').val();
+            $data = {
+                'orderCount': $orderCount,
+                'userId': $userId,
+                'pizzaId': $pizzaId,
+            };
+            console.log($data);
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8000/user/ajax/pizzas/orderPizza',
+                data: $data,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status = 'success') {
+                        window.location.href = 'http://localhost:8000/user/homePage';
+                    }
+                }
+            });
         });
     </script>
 @endsection

@@ -1,7 +1,14 @@
 @extends('user.layouts.master')
-
+@section('cart')
+    <a href="{{ route('cart#orderList') }}" class="btn px-0 ml-3 me-4" id="cartItem">
+        <i class="fas fs-5 fa-shopping-cart text-warning"></i>
+        <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
+            {{ count($cart) }}
+        </span>
+    </a>
+@endsection
 @section('content')
-    <div class="main-content">
+    <div class="main-content" style="width: 100vw">
         <div class="section__content section__content--p30">
             @if (session('updateSuccess'))
                 <div class="alert-message col-lg-8 offset-2">
@@ -22,7 +29,7 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="ms-3" style="width:430px;height:410px">
+                                    <div class="ms-3" style="width:430px;height:400px">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
                                                 <div class="text-center w-100 h-100">
@@ -41,7 +48,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-5 ms-1">
+                                <div class="col-4 offset-1">
                                     <div class="text-dark fs-5">
                                         <p class="mt-1" style="text-transform: capitalize"> <i
                                                 class="fas fa-user me-2"></i> {{ Auth::user()->name }} &nbsp;

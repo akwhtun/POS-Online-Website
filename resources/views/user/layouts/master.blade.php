@@ -3,20 +3,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MultiShop - Online Shop Website Template</title>
+    <title>POS - Online Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    {{-- <link href="img/favicon.ico" rel="icon"> --}}
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> --}}
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('user/lib/animate/animate.min.css') }}" rel="stylesheet">
@@ -55,12 +55,12 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid bg-dark mb-30 sticky-top">
+    <div class="container-fluid bg-dark mb-30 sticky-top w-100">
         <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn d-flex align-items-center justify-content-between mt-1 w-100" href="#"
                     style="height: 65px; padding: 0 30px;">
-                    <img src="{{ asset('logo.png') }}" alt="" style="width:60px">
+                    <img src="{{ asset('logo.png') }}" alt="" style="width:80px">
                 </a>
                 {{-- <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
                     id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
@@ -164,8 +164,8 @@
                                             @csrf
                                             <button type="submit"
                                                 class="btn btn-warning text-white  d-flex justify-content-start align-items-center w-100">
-                                                <i class="fas fa-power-off mx-2 fs-5"></i><span
-                                                    style="font-size: 18px;" class="ms-2">
+                                                <i class="fas fa-power-off mx-2 fs-5"></i><span style="font-size: 18px;"
+                                                    class="ms-2">
                                                     Logout</span></button>
                                         </form>
                                     </div>
@@ -277,7 +277,7 @@
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="img/payments.png" alt="">
+                {{-- <img class="img-fluid" src="img/payments.png" alt=""> --}}
             </div>
         </div>
     </div>
@@ -291,16 +291,16 @@
     {{-- jQuery --}}
     <script src="{{ asset('jQuery/jquery.js') }}"></script>
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> --}}
     <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('owl/owl.carousel.min.js') }}"></script>
     {{-- <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('user/lib/owlcarousel/owl.carousel.js') }}"></script> --}}
 
     <!-- Contact Javascript File -->
-    <script src="{{ asset('user/mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ asset('user/mail/contact.js') }}"></script>
+    {{-- <script src="{{ asset('user/mail/jqBootstrapValidation.min.js') }}"></script>
+    <script src="{{ asset('user/mail/contact.js') }}"></script> --}}
 
     <!-- Template Javascript -->
     <script src="{{ asset('user/js/main.js') }}"></script>

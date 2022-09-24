@@ -23,16 +23,16 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="image" style="height:310px">
+                                    <div class="image" style="height:350px">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
                                                 <td class="text-center">
-                                                    <img class="img-thumbnail rounded"
+                                                    <img class="img-thumbnail rounded w-100 h-100"
                                                         src="{{ asset('admin/profile/default_male.jpg') }}">
                                                 </td>
                                             @else
                                                 <td class="text-center">
-                                                    <img class="img-thumbnail rounded"
+                                                    <img class="img-thumbnail rounded w-100 h-100"
                                                         src="{{ asset('admin/profile/default_female.jpg') }}">
                                                 </td>
                                             @endif

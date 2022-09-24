@@ -1,5 +1,12 @@
 @extends('user.layouts.master')
-
+@section('cart')
+    <a href="{{ route('cart#orderList') }}" class="btn px-0 ml-3 me-4" id="cartItem">
+        <i class="fas fs-5 fa-shopping-cart text-warning"></i>
+        <span class="badge text-light border border-light rounded-circle" style="padding-bottom: 2px;">
+            {{ count($cart) }}
+        </span>
+    </a>
+@endsection
 @section('content')
     <div class="main-content">
         <div class="section__content section__content--p30">

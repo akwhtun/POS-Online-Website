@@ -36,7 +36,8 @@ class UserController extends Controller
     //change password page
     public function changePasswordPage()
     {
-        return view('user.account.change');
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.account.change', compact('cart'));
     }
 
     //change password
@@ -59,13 +60,15 @@ class UserController extends Controller
     //view detail
     public function viewAccountDetail()
     {
-        return view('user.account.detail');
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.account.detail', compact('cart'));
     }
 
     //edit detail
     public function editAccountDetail()
     {
-        return view('user.account.edit');
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.account.edit', compact('cart'));
     }
 
     //update detail

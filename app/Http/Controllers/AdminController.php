@@ -85,6 +85,11 @@ class AdminController extends Controller
     //delete admin list
     public function deleteAdminList($id)
     {
+        $image = User::select('image')->where('id', $id)->first();
+        $imagName = $image->image;
+        if ($imagName != 'null') {
+            Storage::delete('public/' . $imagName);
+        }
         User::where('id', $id)->delete();
         return redirect()->route('adminLists#view')->with(['deleteAdminSuccess' => 'Delete Success!']);
     }
