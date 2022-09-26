@@ -58,17 +58,18 @@
                             <thead>
                                 <tr class="table-title">
                                     <th class="col-2 text-center">Profile</th>
-                                    <th class="col-2 text-center">NAME</th>
+                                    <th class="col-1 text-center">NAME</th>
                                     <th class="col-2 text-center">Email</th>
-                                    <th class="col-2 text-center">Phone</th>
-                                    <th class="col-2 text-center">Address</th>
-                                    <th class="col-2 text-center">Gender</th>
-                                    <th></th>
+                                    <th class="col-1 text-center">Phone</th>
+                                    <th class="col-1 text-center">Address</th>
+                                    <th class="col-1 text-center">Gender</th>
+                                    <th class="col-3 text-center"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($admins as $admin)
-                                    <tr class="tr-shadow">
+                                    <tr class="tr-shadow adminData">
+                                        <input type="hidden" id="changeId" value="{{ $admin->id }}">
                                         @if ($admin->image == null)
                                             @if ($admin->gender == 'Male')
                                                 <td class="text-center">
@@ -90,19 +91,31 @@
                                         <td class="text-center">{{ $admin->phone }}</td>
                                         <td class="text-center">{{ $admin->address }}</td>
                                         <td class="text-center">{{ $admin->gender }}</td>
-                                        <td class="text-center">
+                                        <td class="">
                                             <div class="table-data-feature">
 
                                                 @if (Auth::user()->id == $admin->id)
                                                 @else
-                                                    <form action="{{ route('adminLists#editRole', $admin->id) }}"
+                                                    {{-- <form action="{{ route('adminLists#editRole', $admin->id) }}"
                                                         method="get">
-
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Change Role">
-                                                            <i class="fas fa-user-edit"></i>
-                                                        </button>
-                                                    </form>
+                                                        <div class="dropdown open">
+                                                            <p class="dropdown-toggle" id="triggerId"
+                                                                data-bs-toggle="dropdown">
+                                                                <i class="fas fa-angle-down fs-4 text-warning"
+                                                                    style="cursor: pointer"></i>
+                                                            </p>
+                                                            <div class="dropdown-menu" aria-labelledby="triggerId">
+                                                                <button class="dropdown-item" href="#">Action</button>
+                                                                <button class="dropdown-item disabled"
+                                                                    href="#">Disabled action</button>
+                                                            </div>
+                                                        </div>
+                                                    </form> --}}
+                                                    <select name="" id="changeRole" class="form-select px-2">
+                                                        {{-- <option value="">Change Role</option> --}}
+                                                        <option value="admin" selected>Admin</option>
+                                                        <option value="user">User</option>
+                                                    </select>
                                                     <form action="{{ route('adminLists#delete', $admin->id) }}"
                                                         method="get">
                                                         <button class="item ms-1" data-toggle="tooltip" data-placement="top"
@@ -130,4 +143,30 @@
         </div>
     </div>
     <!-- END MAIN CONTENT-->
+@endsection
+
+
+@section('ajaxContent')
+    <script>
+        $(document).ready(function() {
+            $('#changeRole').on('change', function() {
+                $role = $('#changeRole').val();
+                $id = $('#changeRole').closest('.adminData').find('#changeId').val();
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8000/admin/ajax/changeRole',
+                    data: {
+                        'id': $id,
+                        'role': $role
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status == 'true') {
+                            window.location.href = 'http://localhost:8000/admin/viewAdminList';
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

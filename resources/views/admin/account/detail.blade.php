@@ -23,7 +23,7 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="image" style="height:350px">
+                                    <div class="image" style="height:300px">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
                                                 <td class="text-center">

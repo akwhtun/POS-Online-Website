@@ -5,6 +5,7 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\UserController;
 use App\Models\Product;
@@ -63,9 +64,11 @@ Route::middleware(['auth'])->group(function () {
             //admin delete
             Route::get('deleteAdminList/{id}', [AdminController::class, 'deleteAdminList'])->name('adminLists#delete');
 
-            Route::get('editRole/{id}', [AdminController::class, 'editRole'])->name('adminLists#editRole');
+            // Route::get('editRole/{id}', [AdminController::class, 'editRole'])->name('adminLists#editRole');
 
-            Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('adminLists#updateRole');
+            // Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('adminLists#updateRole');
+
+            Route::get('ajax/changeRole', [AdminController::class, 'changeRole'])->name('ajax#changeRole');
         });
 
 
@@ -85,6 +88,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{id}',  [ProductController::class, 'edit'])->name('pizza#edit');
 
             Route::post('update',  [ProductController::class, 'update'])->name('pizza#update');
+        });
+
+        //order list
+        Route::prefix('orderList')->group(function () {
+            Route::get('view', [OrderController::class, 'viewOrderList'])->name('order#list');
+
+            Route::get('ajax/chooseStatus', [OrderController::class, 'chooseOrderStatus'])->name('order#chooseStatus');
+
+            Route::get('ajax/changeStatus', [OrderController::class, 'changeOrderStatus'])->name('order#changeStatus');
         });
     });
 

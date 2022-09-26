@@ -63,7 +63,11 @@
                         </li>
                         <li>
                             <a href="{{ route('pizza#list') }}">
-                                <i class="fas fa-pizza-slice"></i>Pizza</a>
+                                <i class="fab fa-product-hunt"></i>Product</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('order#list') }}">
+                                <i class="fas fa-list-alt"></i>Order List</a>
                         </li>
                         {{-- <li>
                             <a href="customerList.html">
@@ -249,6 +253,8 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
+
+@yield('ajaxContent');
 
 </html>
 <!-- end document-->
