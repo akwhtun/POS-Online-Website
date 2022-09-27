@@ -64,10 +64,6 @@ Route::middleware(['auth'])->group(function () {
             //admin delete
             Route::get('deleteAdminList/{id}', [AdminController::class, 'deleteAdminList'])->name('adminLists#delete');
 
-            // Route::get('editRole/{id}', [AdminController::class, 'editRole'])->name('adminLists#editRole');
-
-            // Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('adminLists#updateRole');
-
             Route::get('ajax/changeRole', [AdminController::class, 'changeRole'])->name('ajax#changeRole');
         });
 
@@ -97,6 +93,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('ajax/chooseStatus', [OrderController::class, 'chooseOrderStatus'])->name('order#chooseStatus');
 
             Route::get('ajax/changeStatus', [OrderController::class, 'changeOrderStatus'])->name('order#changeStatus');
+
+            Route::get('vieworderData/{ordercode}', [OrderController::class, 'viewOrderData'])->name('order#data');
         });
     });
 

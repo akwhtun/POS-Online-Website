@@ -71,7 +71,10 @@
                                             <input type="hidden" id="orderId" value="{{ $list->id }}">
                                             <td class="text-center">{{ $list->user_id }}</td>
                                             <td class="text-center">{{ $list->user_name }}</td>
-                                            <td class="text-center">{{ $list->order_code }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ route('order#data', $list->order_code) }}"
+                                                    class="text-decoration-none text-info">{{ $list->order_code }}</a>
+                                            </td>
                                             <td class="text-center">{{ $list->total_price }} kyats</td>
                                             <td class="text-center">{{ $list->created_at->format('F-j-m') }}</td>
                                             <td>

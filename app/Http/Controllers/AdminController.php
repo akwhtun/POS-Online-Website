@@ -94,29 +94,6 @@ class AdminController extends Controller
         return redirect()->route('adminLists#view')->with(['deleteAdminSuccess' => 'Delete Success!']);
     }
 
-    // //edit role
-    // public function editRole($id)
-    // {
-    //     $editData = User::where('id', $id)->first();
-    //     return view('admin.account.editRole', compact('editData'));
-    // }
-
-    // //update role
-    // public function updateRole($id, Request $request)
-    // {
-    //     $changeData = $this->getRole($request);
-    //     User::where('id', $id)->update($changeData);
-    //     return redirect()->route('adminLists#view');
-    // }
-
-    // //get change role
-    // private function getRole($request)
-    // {
-    //     return [
-    //         'role' => $request->role,
-    //     ];
-    // }
-
 
     //changeRole
     public function changeRole(Request $request)
