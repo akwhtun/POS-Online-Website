@@ -90,6 +90,17 @@ class AjaxController extends Controller
         return response()->json($response, 200);
     }
 
+    //increaseViewCount
+    public function increaseViewCount(Request $request)
+    {
+        $product = Product::where('id', $request->productId)->first();
+
+        $viewCount = [
+            'view_count' => $product->view_count + 1
+        ];
+        Product::where('id', $request->productId)->update($viewCount);
+    }
+
     //get order pizza
     private function getData($request)
     {

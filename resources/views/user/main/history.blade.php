@@ -41,7 +41,8 @@
                                         <span class="status text-success"><i class="fas fs-5 me-1 fa-check"></i>
                                             Success</span>
                                     @else
-                                        <span class="status text-danger"><i class="fas fs-5 me-1 fa-skull-crossbones"></i>
+                                        <span class="status text-danger"><i
+                                                class="fas fs-5 me-1 fa-exclamation-triangle"></i>
                                             Reject</span>
                                     @endif
                                 </td>

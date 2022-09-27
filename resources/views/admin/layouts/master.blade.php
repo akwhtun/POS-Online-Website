@@ -52,11 +52,6 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        {{-- <li class="active has-sub">
-                            <a class="js-arrow" href="index.html">
-                                <i class="fas fa-tachometer-alt"></i>Home Page
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="{{ route('category#list') }}">
                                 <i class="fas fa-chart-bar"></i>Category</a>
@@ -69,10 +64,10 @@
                             <a href="{{ route('order#list') }}">
                                 <i class="fas fa-list-alt"></i>Order List</a>
                         </li>
-                        {{-- <li>
-                            <a href="customerList.html">
-                                <i class="fas fa-chart-bar"></i>Customers</a>
-                        </li> --}}
+                        <li>
+                            <a href="{{ route('userLists#view') }}">
+                                <i class="fas fa-users"></i>Users</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

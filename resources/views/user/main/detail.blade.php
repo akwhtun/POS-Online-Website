@@ -146,6 +146,17 @@
 @section('ajaxContent')
     <script>
         $(document).ready(function() {
+            // console.log()
+            $productId = $('#pizzaId').val();
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8000/user/ajax/increaseview',
+                data: {
+                    'productId': $productId
+                },
+                dataType: 'json',
+            });
+
             $('#addCartBtn').on('click', function() {
                 $orderCount = $('#orderCount').val();
                 $userId = $('#userId').val();
@@ -179,7 +190,7 @@
             margin: 10,
             nav: false,
             dots: false,
-            autoplay: true,
+            autoplay: false,
             responsive: {
                 0: {
                     items: 2

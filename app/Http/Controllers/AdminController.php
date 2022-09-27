@@ -108,6 +108,26 @@ class AdminController extends Controller
         return response()->json($response, 200);
     }
 
+    //view user list
+    public function viewUserList()
+    {
+        $users = User::where('role', 'user')->paginate(5);
+        return view('admin.account.userList', compact('users'));
+    }
+
+    //userChangeRole
+    public function userChangeRole(Request $request)
+    {
+        User::where('id', $request->id)->update(
+            ['role' => $request->role]
+        );
+        $response = [
+            'message' => 'change success',
+            'status' => 'true'
+        ];
+        return response()->json($response, 200);
+    }
+
     //get account update data
     private function getData($request)
     {

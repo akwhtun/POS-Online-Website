@@ -58,8 +58,8 @@
                             <thead>
                                 <tr class="table-title">
                                     <th class="col-2 text-center">Profile</th>
-                                    <th class="col-1 text-center">NAME</th>
-                                    <th class="col-2 text-center">Email</th>
+                                    <th class="col-2 text-center">NAME</th>
+                                    <th class="col-1 text-center">Email</th>
                                     <th class="col-1 text-center">Phone</th>
                                     <th class="col-1 text-center">Address</th>
                                     <th class="col-1 text-center">Gender</th>
@@ -111,7 +111,8 @@
                                                             </div>
                                                         </div>
                                                     </form> --}}
-                                                    <select name="" id="changeRole" class="form-select px-2">
+                                                    <select name="" id=""
+                                                        class="form-select px-2 changeRole">
                                                         {{-- <option value="">Change Role</option> --}}
                                                         <option value="admin" selected>Admin</option>
                                                         <option value="user">User</option>
@@ -149,9 +150,10 @@
 @section('ajaxContent')
     <script>
         $(document).ready(function() {
-            $('#changeRole').on('change', function() {
-                $role = $('#changeRole').val();
-                $id = $('#changeRole').closest('.adminData').find('#changeId').val();
+            $('.changeRole').on('change', function() {
+                $role = $(this).val();
+                $id = $(this).closest('.adminData').find('#changeId').val();
+                console.log($role);
                 $.ajax({
                     type: 'get',
                     url: 'http://localhost:8000/admin/ajax/changeRole',
@@ -162,7 +164,8 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status == 'true') {
-                            window.location.href = 'http://localhost:8000/admin/viewAdminList';
+                            // window.location.href = 'http://localhost:8000/admin/viewAdminList';
+                            location.reload();
                         }
                     }
                 })

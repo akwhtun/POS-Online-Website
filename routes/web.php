@@ -64,7 +64,14 @@ Route::middleware(['auth'])->group(function () {
             //admin delete
             Route::get('deleteAdminList/{id}', [AdminController::class, 'deleteAdminList'])->name('adminLists#delete');
 
+            //admin change role
             Route::get('ajax/changeRole', [AdminController::class, 'changeRole'])->name('ajax#changeRole');
+
+            //user lists
+            Route::get('viewUserList', [AdminController::class, 'viewUserList'])->name('userLists#view');
+
+            //user change role
+            Route::get('ajax/userChangeRole', [AdminController::class, 'userChangeRole'])->name('ajax#userChangeRole');
         });
 
 
@@ -135,6 +142,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('cart/clear', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
 
             Route::get('cartList/remove', [AjaxController::class, 'listRemove'])->name('ajax#listRemove');
+
+            Route::get('increaseview', [AjaxController::class, 'increaseViewCount'])->name('ajax#increaseView');
         });
 
         //cart
