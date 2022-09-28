@@ -19,7 +19,7 @@ class AjaxController extends Controller
             return $list;
         }
         if ($request->status == 'asc') {
-            $list = Product::orderBy('id')->get();
+            $list = Product::orderBy('id', 'asc')->get();
             return $list;
         }
     }

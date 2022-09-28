@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Auth;
@@ -71,13 +72,7 @@ class AdminController extends Controller
     //view admin list
     public function viewAdminList()
     {
-        $admins = User::when(request('searchKey'), function ($query) {
-            $query->orwhere('name', 'like', '%' . request('searchKey') . '%')
-                ->orwhere('email', 'like', '%' . request('searchKey') . '%')
-                ->orwhere('phone', 'like', '%' . request('searchKey') . '%')
-                ->orwhere('address', 'like', '%' . request('searchKey') . '%');
-        })
-            ->where('role', 'admin')->paginate(4);
+        $admins = User::where('role', 'admin')->paginate(4);
         $admins->appends(request()->all());
         return view('admin.account.list', compact('admins'));
     }
@@ -111,7 +106,7 @@ class AdminController extends Controller
     //view user list
     public function viewUserList()
     {
-        $users = User::where('role', 'user')->paginate(5);
+        $users = User::where('role', 'user')->paginate(4);
         return view('admin.account.userList', compact('users'));
     }
 
@@ -126,6 +121,28 @@ class AdminController extends Controller
             'status' => 'true'
         ];
         return response()->json($response, 200);
+    }
+
+
+    //user contacts
+    public function userContact()
+    {
+        $data = Contact::orderBy('id', 'desc')->paginate(5);
+        return view('admin.contact.list', compact('data'));
+    }
+
+    //user contact delete
+    public function userContactDelete($id)
+    {
+        Contact::where('id', $id)->delete();
+        return redirect()->route('userContact#list')->with(['deleteUserContact' => 'Delete Success!']);
+    }
+
+    //user contact view
+    public function userContactView($id)
+    {
+        $data = Contact::where('id', $id)->first();
+        return view('admin.contact.view', compact('data'));
     }
 
     //get account update data

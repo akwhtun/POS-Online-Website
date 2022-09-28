@@ -19,7 +19,7 @@
                                     <label class="control-label mb-1">Pizza Name</label>
                                     <input name="pizzaName" type="text"
                                         class="form-control @error('pizzaName') is-invalid @enderror"
-                                        value="{{ old('pizzaName') }}" placeholder="Enter pizza name...">
+                                        value="{{ old('pizzaName') }}" placeholder="Enter product name...">
                                     @error('pizzaName')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <label class="control-label mb-1">Pizza Description</label>
                                     <textarea name="pizzaDescription" cols="30" rows="10"
-                                        class="form-control @error('pizzaDescription') is-invalid @enderror" placeholder="Enter pizza description...">{{ old('pizzaDescription') }}</textarea>
+                                        class="form-control @error('pizzaDescription') is-invalid @enderror" placeholder="Enter product description...">{{ old('pizzaDescription') }}</textarea>
                                     @error('pizzaDescription')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -66,7 +66,7 @@
                                     <label class="control-label mb-1">Pizza Waiting Time</label>
                                     <input name="pizzaWaitingTime" type="text"
                                         class="form-control @error('pizzaWaitingTime') is-invalid @enderror"
-                                        value="{{ old('pizzaWaitingTime') }}" placeholder="Enter pizza waiting time...">
+                                        value="{{ old('pizzaWaitingTime') }}" placeholder="Enter product waiting time...">
                                     @error('pizzaWaitingTime')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -77,7 +77,7 @@
                                     <label class="control-label mb-1">Pizza Price</label>
                                     <input name="pizzaPrice" type="number"
                                         class="form-control @error('pizzaPrice') is-invalid @enderror"
-                                        value="{{ old('pizzaPrice') }}" placeholder="Enter pizza price...">
+                                        value="{{ old('pizzaPrice') }}" placeholder="Enter product price...">
                                     @error('pizzaPrice')
                                         <div class="invalid-feedback">
                                             {{ $message }}

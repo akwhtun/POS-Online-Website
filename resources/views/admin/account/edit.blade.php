@@ -15,7 +15,7 @@
                             <form action="{{ route('updateAccountDetail', Auth::user()->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="image mx-auto" style="width:300px; height: 320px;">
+                                <div class="image mx-auto" style="width:300px; height: 310px;">
                                     @if (Auth::user()->image == null)
                                         @if (Auth::user()->gender == 'Male')
                                             <td class="text-center">

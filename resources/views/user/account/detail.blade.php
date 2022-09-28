@@ -8,18 +8,18 @@
     </a>
 @endsection
 @section('content')
-    <div class="main-content" style="width: 100vw">
+    <div class="main-content">
         <div class="section__content section__content--p30">
             @if (session('updateSuccess'))
-                <div class="alert-message col-lg-8 offset-2">
+                <div class="alert-message col-lg-6 offset-3">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <p>{{ session('updateSuccess') }}</p>
+                        <p class="m-0 p-0">{{ session('updateSuccess') }}</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
             @endif
             <div class="container-fluid">
-                <div class="col-lg-8 offset-2">
+                <div class="col-lg-6 mx-auto">
                     <div class="card p-3">
                         <div class="card-body">
                             <div class="card-title">
@@ -29,18 +29,18 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="ms-3" style="width:430px;height:400px">
+                                    <div class="image" style="height:300px">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
-                                                <div class="text-center w-100 h-100">
-                                                    <img class="img-thumbnail rounded h-100 w-100"
+                                                <td class="text-center">
+                                                    <img class="img-thumbnail rounded w-100 h-100"
                                                         src="{{ asset('admin/profile/default_male.jpg') }}">
-                                                </div>
+                                                </td>
                                             @else
-                                                <div class="text-center w-100 h-100">
-                                                    <img class="img-thumbnail rounded h-100 w-100"
+                                                <td class="text-center">
+                                                    <img class="img-thumbnail rounded w-100 h-100"
                                                         src="{{ asset('admin/profile/default_female.jpg') }}">
-                                                </div>
+                                                </td>
                                             @endif
                                         @else
                                             <img src="{{ asset('storage/' . Auth::user()->image) }}"
@@ -48,7 +48,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-4 offset-1">
+                                <div class="col-6">
                                     <div class="text-dark fs-5">
                                         <p class="mt-1" style="text-transform: capitalize"> <i
                                                 class="fas fa-user me-2"></i> {{ Auth::user()->name }} &nbsp;
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="text-center mt-1">
                                     <a href="{{ route('user#editAccountDetail') }}"
-                                        class=" d-block btn btn-dark py-2 fs-5 mx-auto mt-3 w-100">
+                                        class=" d-block btn btn-dark py-2 mx-auto mt-3 w-100">
                                         Edi Profile &nbsp; <i class="fas fa-edit me-2"></i></a>
                                 </div>
                             </div>

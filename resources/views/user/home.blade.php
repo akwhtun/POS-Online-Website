@@ -26,7 +26,7 @@
                 <div class="bg-light p-4 mb-30">
                     <form>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <a href="{{ route('user#home') }}" class="text-decoration-none text-dark">All</a>
+                            <a href="{{ route('user#home') }}" class="text-decoration-none text-dark">🍽 All</a>
                         </div>
                         @foreach ($categories as $category)
                             <div
@@ -38,94 +38,6 @@
                         @endforeach
                     </form>
                 </div>
-                <!-- Price End -->
-
-                <!-- Color Start -->
-                {{-- <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
-                        by color</span></h5>
-                <div class="bg-light p-4 mb-30">
-                    <form>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all">All Color</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-1">
-                            <label class="custom-control-label" for="color-1">Black</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-2">
-                            <label class="custom-control-label" for="color-2">White</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
-                            <label class="custom-control-label" for="color-3">Red</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-4">
-                            <label class="custom-control-label" for="color-4">Blue</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5">Green</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
-                </div> --}}
-                <!-- Color End -->
-
-                {{-- <!-- Size Start -->
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
-                        by size</span></h5>
-                <div class="bg-light p-4 mb-30">
-                    <form>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="size-all">
-                            <label class="custom-control-label" for="size-all">All Size</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-1">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-2">
-                            <label class="custom-control-label" for="size-2">S</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-3">
-                            <label class="custom-control-label" for="size-3">M</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-4">
-                            <label class="custom-control-label" for="size-4">L</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="size-5">
-                            <label class="custom-control-label" for="size-5">XL</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
-                </div> --}}
                 <div class="">
                     <button class="btn btn btn-warning w-100">Order</button>
                 </div>
@@ -140,8 +52,6 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                                {{-- <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
-                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button> --}}
                                 <a href="{{ route('cart#history') }}" class="btn btn-dark text-white position-relative">
                                     History <i class="fas fa-history"></i>
                                     <span
@@ -152,28 +62,14 @@
                             </div>
                             <div class="ml-2">
                                 <div class="btn-group">
-                                    {{-- <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                        data-bs-toggle="dropdown">Sorting</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Latest</a>
-                                        <a class="dropdown-item" href="#">Newest</a>
-                                        <a class="dropdown-item" href="#">Best Rating</a>
-                                    </div> --}}
+
                                     <select id="sorting" class="form-select">
                                         <option value="">Choose Option</option>
-                                        <option value="latest">Latest</option>
-                                        <option value="newest">Newest</option>
+                                        <option value="descending">Descending</option>
+                                        <option value="ascending">Ascending</option>
                                     </select>
                                 </div>
-                                {{-- <div class="btn-group ml-2">
-                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                        data-bs-toggle="dropdown">Showing</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">10</a>
-                                        <a class="dropdown-item" href="#">20</a>
-                                        <a class="dropdown-item" href="#">30</a>
-                                    </div>
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
@@ -190,12 +86,7 @@
                                             <div class="product-action">
                                                 <a class="btn btn-outline-dark btn-square" id="addCartBtn"><i
                                                         class="fa fa-shopping-cart"></i></a>
-                                                {{-- <a class="btn btn-outline-dark btn-square" href=""><i
-                                                        class="far fa-heart"></i></a>
-                                                <a class="btn btn-outline-dark btn-square" href=""><i
-                                                        class="fa fa-sync-alt"></i></a>
-                                                <a class="btn btn-outline-dark btn-square" href=""><i
-                                                        class="fa fa-search"></i></a> --}}
+
                                                 <a href="{{ route('pizza#detail', $pizza->id) }}"
                                                     class="btn btn-outline-dark btn-square">
                                                     <i class="fas fa-info"></i>
@@ -209,17 +100,14 @@
                                                 <h5>{{ $pizza->price }} kyats</h5>
                                                 {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
                                             </div>
-                                            {{-- <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                    </div> --}}
+
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="mt-3">
+                                {{ $pizzas->links() }}
+                            </div>
                         @else
                             <h3 class="text-center text-danger shadow-sm mt-3 py-3 col-7 mx-auto">There is no pizza <i
                                     class="fas fa-pizza-slice"></i></h3>
@@ -239,10 +127,10 @@
             $('#sorting').on('change', function() {
                 $option = $('#sorting').val();
 
-                if ($option == 'newest') {
+                if ($option == 'descending') {
                     $.ajax({
                         type: 'get',
-                        url: 'http://localhost:8000/user/ajax/pizzas/getList',
+                        url: '/user/ajax/pizzas/getList',
                         data: {
                             'status': 'desc'
                         },
@@ -288,10 +176,10 @@
 
                         }
                     });
-                } else if ($option == 'latest') {
+                } else if ($option == 'ascending') {
                     $.ajax({
                         type: 'get',
-                        url: 'http://localhost:8000/user/ajax/pizzas/getList',
+                        url: '/user/ajax/pizzas/getList',
                         data: {
                             'status': 'asc'
                         },
@@ -359,12 +247,12 @@
             };
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8000/user/ajax/pizzas/orderPizza',
+                url: '/user/ajax/pizzas/orderPizza',
                 data: $data,
                 dataType: 'json',
                 success: function(response) {
                     if (response.status = 'success') {
-                        window.location.href = 'http://localhost:8000/user/homePage';
+                        window.location.href = '/user/homePage';
                     }
                 }
             });

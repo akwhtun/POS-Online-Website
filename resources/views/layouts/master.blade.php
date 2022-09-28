@@ -49,7 +49,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{ asset('admin/images/icon/logo.png') }}" alt="CoolAdmin">
+                                <img src="{{ asset('logo.png') }}" alt="POS" style="width: 120px">
                             </a>
                         </div>
                         @yield('content')

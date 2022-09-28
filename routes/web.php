@@ -5,9 +5,11 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Contact;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +74,15 @@ Route::middleware(['auth'])->group(function () {
 
             //user change role
             Route::get('ajax/userChangeRole', [AdminController::class, 'userChangeRole'])->name('ajax#userChangeRole');
+
+            //user contact
+            Route::get('userContact/list', [AdminController::class, 'userContact'])->name('userContact#list');
+
+            //user contact delete
+            Route::post('userContact/delete/{id}', [AdminController::class, 'userContactDelete'])->name('userContact#delete');
+
+            //user contact view
+            Route::get('userContact/view/{id}', [AdminController::class, 'userContactView'])->name('userContact#view');
         });
 
 
@@ -152,24 +163,10 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('getHistoryList', [CartController::class, 'historyList'])->name('cart#history');
         });
+
+        //contact page
+        Route::get('contactPage', [ContactController::class, 'contactPage'])->name('user#contact');
+
+        Route::post('contactSuccess', [ContactController::class, 'contactSuccess'])->name('usre#contactSuccess');
     });
 });
-
-// Route::middleware(['auth_user'])->group(function () {
-
-
-//     Route::prefix('user')->group(function () {
-//     });
-
-
-
-//     //password change
-
-//     //user
-//     Route::prefix('user')->group(function () {
-
-//         //ajax
-
-//
-//     });
-// });

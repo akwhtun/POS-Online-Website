@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Category List')
+@section('title', 'User Contact List')
 
 @section('content')
     <!-- MAIN CONTENT-->
@@ -12,25 +12,15 @@
                     <div class="table-data__tool align-items-center">
                         <div class="table-data__tool-left">
                             <div class="overview-wrap">
-                                <h3 class="title-1">Category List</h3>
+                                <h3 class="title-1">User Contact List</h3>
 
                             </div>
                         </div>
                         <div class="d-felx text-dark bg-light shadow-sm px-3 rounded" style="font-size: 25px">
-                            <i class="fas fa-database"></i><span class="ms-2">{{ $categories->total() }}</span>
-                        </div>
-                        <div class="table-data__tool-right">
-                            <a href="{{ route('category#add') }}">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>add category
-                                </button>
-                            </a>
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                CSV download
-                            </button>
+                            <i class="fas fa-database"></i><span class="ms-2">{{ $data->total() }}</span>
                         </div>
                     </div>
-                    <div class="row d-flex align-items-center">
+                    {{-- <div class="row d-flex align-items-center">
                         <div class="col-4">
                             <p style="font-size: 25px;">Search For &nbsp;<span
                                     class="text-danger">{{ request('searchKey') }}</span></p>
@@ -42,59 +32,52 @@
                                 <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                             </div>
                         </form>
-                    </div>
-                    @if (session('deleteSuccess'))
+                    </div> --}}
+                    @if (session('deleteUserContact'))
                         <div class="alert-message col-4 offset-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <p>{{ session('deleteSuccess') }}</p>
+                                <p>{{ session('deleteUserContact') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
                         </div>
                     @endif
                     <div class="table-responsive table-responsive-data2">
-                        @if (count($categories) != 0)
+                        @if (count($data) != 0)
                             <table class="table table-data2">
                                 <thead>
                                     <tr class="table-title">
                                         <th class="col-1 text-center">ID</th>
-                                        <th class="col-4 text-center">CATEGORY NAME</th>
-                                        <th class="col-4 text-center">CREATED DATE</th>
+                                        <th class="col-3 text-center">NAME</th>
+                                        <th class="col-3 text-center">EMAIL</th>
+                                        <th class="col-3 text-center">MESSAGE</th>
+                                        <th class="col-3 text-center">CREATED DATE</th>
                                         <th class="col-3 text-center"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($data as $d)
                                         <tr class="tr-shadow">
-                                            <td class="text-center">{{ $category->id }}</td>
-                                            <td class="text-center">{{ $category->name }}</td>
-                                            <td class="text-center">{{ $category->created_at }}</td>
+                                            <td class="text-center">{{ $d->id }}</td>
+                                            <td class="text-center">{{ $d->name }}</td>
+                                            <td class="text-center">{{ $d->email }}</td>
+                                            <td class="text-center">{{ Str::words($d->message, 5, '.....') }}</td>
+                                            <td class="text-center">{{ $d->created_at->format('F-j-m') }}</td>
                                             <td class="text-center">
                                                 <div class="table-data-feature">
-                                                    {{-- <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="View">
-                                                        <i class="zmdi zmdi-eye"></i>
-                                                    </button> --}}
-                                                    <form action="{{ route('category#edit', $category->id) }}"
-                                                        method="get">
-                                                        {{-- @csrf --}}
+                                                    <form action="{{ route('userContact#view', $d->id) }}" method="get">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
+                                                            title="View">
+                                                            <i class="zmdi zmdi-eye"></i>
                                                         </button>
                                                     </form>
-                                                    <form action="{{ route('category#delete', $category->id) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('userContact#delete', $d->id) }}" method="POST">
                                                         @csrf
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete" type="submit">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </button>
                                                     </form>
-                                                    {{-- <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button> --}}
                                                 </div>
                                             </td>
                                         </tr>
@@ -104,12 +87,12 @@
                             </table>
                         @else
                             <div class="mt-4 text-center">
-                                <p class="text-secondary" style="font-size: 30px;">There is no category....</p>
+                                <p class="text-secondary" style="font-size: 30px;">There is no contact....</p>
                             </div>
                         @endif
                         <div class="mt-3">
                             {{-- {{ $categories->appends(request()->query())->links() }} --}}
-                            {{ $categories->links() }}
+                            {{ $data->links() }}
                         </div>
                     </div>
                     <!-- END DATA TABLE -->
@@ -118,4 +101,5 @@
         </div>
     </div>
     <!-- END MAIN CONTENT-->
+
 @endsection

@@ -45,8 +45,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="{{ asset('admin/images/icon/logo.png') }}" alt="Cool Admin" />
+                <a href="{{ route('category#list') }}">
+                    <img src="{{ asset('logo.png') }}" alt="POS" style="width: 120px">
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -67,6 +67,10 @@
                         <li>
                             <a href="{{ route('userLists#view') }}">
                                 <i class="fas fa-users"></i>Users</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('userContact#list') }}">
+                                <i class="fas fa-users-cog"></i>Users Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -92,7 +96,7 @@
                                 </button>
                             </form> --}}
                             <div class="header-button">
-                                <div class="noti-wrap">
+                                {{-- <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                                         <span class="quantity">3</span>
@@ -132,7 +136,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image" style="width:50px; height: 50px;">

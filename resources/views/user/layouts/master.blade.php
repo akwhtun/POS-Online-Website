@@ -3,27 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>POS - Online Website Template</title>
+    <title>POS - Online Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    {{-- <link href="img/favicon.ico" rel="icon"> --}}
-
-    <!-- Google Web Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> --}}
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('user/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('owl/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('owl/owl.theme.default.min.css') }}">
-    {{-- <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.css') }}" rel="stylesheet"> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
@@ -41,65 +29,23 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    {{-- <div class="container-fluid">
-        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-            <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
-                    <span class="h2 text-uppercase text-dark bg-primary px-3 py-2 ml-n1">My Shop</span>
-                </a>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30 sticky-top w-100">
         <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn d-flex align-items-center justify-content-between mt-1 w-100" href="#"
-                    style="height: 65px; padding: 0 30px;">
+                <a class="btn d-flex align-items-center justify-content-between mt-1 w-100"
+                    href="{{ route('user#home') }}" style="height: 65px; padding: 0 30px;">
                     <img src="{{ asset('logo.png') }}" alt="" style="width:80px">
                 </a>
-                {{-- <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
-                    id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
-                    <div class="navbar-nav w-100">
-                        <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i
-                                    class="fa fa-angle-right float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
-                    </div>
-                </nav> --}}
             </div>
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark  py-lg-0 px-0 d-f">
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-1">
-                            <a href="{{ route('user#home') }}" class="nav-item nav-link active">Home</a>
-                            {{-- <a href="cart.html" class="nav-item nav-link">My Cart</a> --}}
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('user#home') }}" class=" text-white nav-item nav-link">Home</a>
+                            <a href="{{ route('user#contact') }}" class=" text-white nav-item nav-link">Contact Us</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-flex align-items-center">
-                            {{-- <a href="" class="btn px-0">
-                                <i class="fas fa-user-circle text-warning"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle"
-                                    style="padding-bottom: 2px;">0</span>
-                            </a> --}}
                             <a href="#" class="text-decoration-none d-flex align-items-center">
                                 <div class="">
                                     @if (Auth::user()->image == null)
@@ -125,12 +71,13 @@
                                 <span class=" text-white ms-1"
                                     style="text-transform: capitalize">{{ Auth::user()->name }}</span>
                             </a>
-                            <div class="dropdown ms-2 me-5 pt-4">
-                                <p class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown">
+                            <div class="dropdown open ms-2 me-5 pt-2">
+                                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     <i class="fas fa-angle-down fs-4 text-warning" style="cursor: pointer"></i>
-                                </p>
+                                </a>
                                 <div class="dropdown-menu  m-0 p-0" aria-labelledby="triggerId" style="width:210px;">
-                                    <div class="text-center py-2 border border-0 border-bottom">
+                                    <div class="dropdown-item text-center py-2 border border-0 border-bottom">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
                                                 <td class="text-center">
@@ -171,14 +118,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <span class="text-warning">|</span>
-                            <form action="{{ route('logout') }}" method="POST" class="d-inline ms-1">
-                                @csrf
-                                <button style="submit" class="btn btn-sm btn-outline-warning mx-1"
-                                    style="font-size:17px;"><i class="fas fa-power-off"></i>
-                                    &nbsp;Logout</button>
-                            </form> --}}
-                            {{-- <span class="text-warning">|</span> --}}
                             @yield('cart')
                             {{-- @yield('history') --}}
                         </div>

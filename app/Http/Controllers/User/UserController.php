@@ -19,7 +19,7 @@ class UserController extends Controller
     //home page
     public function homePage()
     {
-        $pizzas = Product::orderBy('id', 'desc')->get();
+        $pizzas = Product::orderBy('created_at', 'desc')->paginate(6);
         $categories = Category::get();
         $cart = Cart::where('user_id', Auth::user()->id)->get();
         $history = Order::where('user_id', Auth::user()->id)->get();

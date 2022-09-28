@@ -114,7 +114,7 @@
                 console.log($role);
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/admin/ajax/userChangeRole',
+                    url: '/admin/ajax/userChangeRole',
                     data: {
                         'id': $id,
                         'role': $role

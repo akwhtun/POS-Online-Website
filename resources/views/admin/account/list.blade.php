@@ -20,29 +20,6 @@
                             <i class="fas fa-database"></i><span class="ms-2">
                                 {{ $admins->total() }}</span>
                         </div>
-                        <div class="table-data__tool-right">
-                            {{-- <a href="{{ route('category#add') }}">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>add item
-                                </button>
-                            </a> --}}
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                CSV download
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-4">
-                            <p style="font-size: 25px;">Search For &nbsp;<span
-                                    class="text-danger">{{ request('searchKey') }}</span></p>
-                        </div>
-                        <form method="get" class="col-4 offset-4">
-                            <div class="input-group">
-                                <input type="search" name="searchKey" class="form-control rounded"
-                                    value="{{ request('searchKey') }}" placeholder="Search...">
-                                <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
                     </div>
                     @if (session('deleteAdminSuccess'))
                         <div class="alert-message col-4 offset-8 mt-2">
@@ -96,24 +73,8 @@
 
                                                 @if (Auth::user()->id == $admin->id)
                                                 @else
-                                                    {{-- <form action="{{ route('adminLists#editRole', $admin->id) }}"
-                                                        method="get">
-                                                        <div class="dropdown open">
-                                                            <p class="dropdown-toggle" id="triggerId"
-                                                                data-bs-toggle="dropdown">
-                                                                <i class="fas fa-angle-down fs-4 text-warning"
-                                                                    style="cursor: pointer"></i>
-                                                            </p>
-                                                            <div class="dropdown-menu" aria-labelledby="triggerId">
-                                                                <button class="dropdown-item" href="#">Action</button>
-                                                                <button class="dropdown-item disabled"
-                                                                    href="#">Disabled action</button>
-                                                            </div>
-                                                        </div>
-                                                    </form> --}}
                                                     <select name="" id=""
                                                         class="form-select px-2 changeRole">
-                                                        {{-- <option value="">Change Role</option> --}}
                                                         <option value="admin" selected>Admin</option>
                                                         <option value="user">User</option>
                                                     </select>
@@ -134,7 +95,6 @@
                             </tbody>
                         </table>
                         <div class="mt-3">
-                            {{-- {{ $categories->appends(request()->query())->links() }} --}}
                             {{ $admins->links() }}
                         </div>
                     </div>
@@ -156,7 +116,7 @@
                 console.log($role);
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/admin/ajax/changeRole',
+                    url: '/admin/ajax/changeRole',
                     data: {
                         'id': $id,
                         'role': $role

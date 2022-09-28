@@ -127,14 +127,14 @@
                 // console.log(Object.assign({}, $orderList));
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/user/ajax/order',
+                    url: '/user/ajax/order',
                     data: Object.assign({}, $orderList),
                     dataType: 'json',
                     success: function(response) {
                         if (response.status = 'true') {
 
                             window.location.href =
-                                'http://localhost:8000/user/ajax/orderSuccess';
+                                '/user/ajax/orderSuccess';
 
                         }
                     }
@@ -159,7 +159,7 @@
 
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/user/ajax/cartList/remove',
+                    url: '/user/ajax/cartList/remove',
                     data: {
                         'id': $clearId
                     },
@@ -168,7 +168,7 @@
                     //     if (response.status = 'true') {
 
                     //         window.location.href =
-                    //             'http://localhost:8000/user/cart/getOrderList';
+                    //             '/user/cart/getOrderList';
 
                     //     }
                     // }
@@ -180,13 +180,13 @@
                 // $allList.remove();
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/user/ajax/cart/clear',
+                    url: '/user/ajax/cart/clear',
                     dataType: 'json',
                     success: function(response) {
                         if (response.status = 'true') {
 
                             window.location.href =
-                                'http://localhost:8000/user/cart/getOrderList';
+                                '/user/cart/getOrderList';
 
                         }
                     }

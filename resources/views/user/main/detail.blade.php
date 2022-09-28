@@ -150,7 +150,7 @@
             $productId = $('#pizzaId').val();
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8000/user/ajax/increaseview',
+                url: '/user/ajax/increaseview',
                 data: {
                     'productId': $productId
                 },
@@ -169,12 +169,12 @@
 
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/user/ajax/pizzas/orderPizza',
+                    url: '/user/ajax/pizzas/orderPizza',
                     data: $data,
                     dataType: 'json',
                     success: function(response) {
                         if (response.status = 'success') {
-                            window.location.href = 'http://localhost:8000/user/homePage';
+                            window.location.href = '/user/homePage';
                         }
                     }
                 });
@@ -220,12 +220,12 @@
             console.log($data);
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8000/user/ajax/pizzas/orderPizza',
+                url: '/user/ajax/pizzas/orderPizza',
                 data: $data,
                 dataType: 'json',
                 success: function(response) {
                     if (response.status = 'success') {
-                        window.location.href = 'http://localhost:8000/user/homePage';
+                        window.location.href = '/user/homePage';
                     }
                 }
             });

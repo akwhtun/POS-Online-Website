@@ -62,46 +62,6 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 @endsection
 
-@section('ajaxContent')
-    {{-- <script>
-        $(document).ready(function() {
-            $('.orderBtn').on('click', function() {
-
-                $orderList = [];
-                $random = Math.floor(Math.random() * 100001);
-                $('.dataRow tr').each(function(i, r) {
-                    $userId = $(r).find('.userId').val();
-                    $productId = $(r).find('.productId').val();
-                    $qty = $(r).find('.orderQty').val();
-                    $totalPrice = $(r).find('.totalPrice').text().replace('kyats', '');
-                    $orderCode = 'pos' + $userId + $random;
-                    $orderList.push({
-                        'user_id': $userId,
-                        'product_id': $productId,
-                        'qty': $qty,
-                        'total': $totalPrice,
-                        'order_code': $orderCode
-                    });
-                })
-                // console.log(Object.assign({}, $orderList));
-                $.ajax({
-                    type: 'get',
-                    url: 'http://localhost:8000/user/ajax/order',
-                    data: Object.assign({}, $orderList),
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status = 'true') {
-
-                            window.location.href =
-                                'http://localhost:8000/user/ajax/orderSuccess';
-
-                        }
-                    }
-                })
-            })
-        })
-    </script> --}}
-@endsection
 @section('script')
     <script src="{{ asset('js/cart.js') }}"></script>
 @endsection

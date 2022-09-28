@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="row d-flex align-items-center">
-                        <div class="col-4">
+                        {{-- <div class="col-4">
                             <p style="font-size: 25px;">Search For &nbsp;<span
                                     class="text-danger">{{ request('searchKey') }}</span></p>
                         </div>
@@ -50,7 +50,7 @@
                                     value="{{ request('searchKey') }}" placeholder="Search....">
                                 <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="table-responsive table-responsive-data2">
                         @if (count($orderList) != 0)
@@ -98,6 +98,9 @@
                                     <tr class="spacer"></tr>
                                 </tbody>
                             </table>
+                            <div class="mt-3">
+                                {{ $orderList->links() }}
+                            </div>
                         @else
                             <div class="mt-4 text-center">
                                 <p class="text-secondary" style="font-size: 30px;">There is no order....</p>
@@ -120,7 +123,7 @@
 
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/orderList/ajax/chooseStatus',
+                    url: '/orderList/ajax/chooseStatus',
                     data: {
                         'status': $status
                     },
@@ -212,7 +215,7 @@
                 // console.log($orderId);
                 $.ajax({
                     type: 'get',
-                    url: 'http://localhost:8000/orderList/ajax/changeStatus',
+                    url: '/orderList/ajax/changeStatus',
                     data: {
                         'changeStatus': $changeStatus,
                         'orderId': $orderId,
@@ -220,7 +223,7 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status == 'true') {
-                            window.location.href = 'http://localhost:8000/orderList/view'
+                            window.location.href = '/orderList/view'
                         }
 
                     }
