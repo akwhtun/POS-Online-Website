@@ -64,7 +64,7 @@
                                 <div class="btn-group">
 
                                     <select id="sorting" class="form-select">
-                                        <option value="">Choose Option</option>
+                                        <option value="home">Choose Option</option>
                                         <option value="descending">Descending</option>
                                         <option value="ascending">Ascending</option>
                                     </select>
@@ -109,7 +109,7 @@
                                 {{ $pizzas->links() }}
                             </div>
                         @else
-                            <h3 class="text-center text-danger shadow-sm mt-3 py-3 col-7 mx-auto">There is no pizza <i
+                            <h3 class="text-center text-danger shadow-sm mt-3 py-3 col-7 mx-auto">There is no food <i
                                     class="fas fa-pizza-slice"></i></h3>
                         @endif
                     </div>
@@ -158,15 +158,7 @@
                                 <a class="h6 text-decoration-none text-truncate" href=""> ${response[$i] . name} </a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5> ${response[$i] . price}  kyats</h5>
-                                    {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
                                 </div>
-                                {{-- <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                    </div> --}}
                             </div>
                         </div>
                         </div>
@@ -208,15 +200,7 @@
                                 <a class="h6 text-decoration-none text-truncate" href=""> ${response[$i] . name} </a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5> ${response[$i] . price}  kyats</h5>
-                                    {{-- <h6 class="text-muted ml-2"><del>25000</del></h6> --}}
                                 </div>
-                                {{-- <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                        <small class="fa fa-star text-warning mr-1"></small>
-                                    </div> --}}
                             </div>
                         </div>
                         </div>
@@ -227,16 +211,44 @@
                         }
 
                     });
+                } else if ($option == 'home') {
+                    $.ajax({
+                        type: 'get',
+                        url: '/user/homePage',
+                        success: function(response) {
+                            location.reload();
+                        }
+                    })
                 }
             });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.pagination a', function(event) {
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                fetchData(page);
+            })
+
+            function fetchData(page) {
+                $.ajax({
+                    type: 'get',
+                    url: '/user/homePage?page=' + page,
+                    success: function(response) {
+                        console.log(response);
+                        $('#list').html(response);
+                    }
+                })
+            }
+        })
     </script>
 @endsection
 
 @section('script')
     <script>
         $('#list').delegate('#addCartBtn', 'click', function() {
-            console.log($(this));
+            // console.log($(this));
             $orderCount = 1;
             $userId = $('#userId').val();
             $pizzaId = $(this).closest('.pizzaList').find('#pizzaId').val();

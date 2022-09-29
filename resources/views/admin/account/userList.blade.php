@@ -39,11 +39,11 @@
                             <thead>
                                 <tr class="table-title">
                                     <th class="col-2 text-center">Profile</th>
-                                    <th class="col-3 text-center">NAME</th>
-                                    <th class="col-2 text-center">Email</th>
+                                    <th class="col-2 text-center">NAME</th>
+                                    <th class="col-1 text-center">Email</th>
                                     <th class="col-1 text-center">Phone</th>
                                     <th class="col-1 text-center">Address</th>
-                                    <th class="col-1 text-center">Gender</th>
+                                    <th class="col-2 text-center"></th>
                                     <th class="col-3 text-center"></th>
                                 </tr>
                             </thead>
@@ -67,17 +67,19 @@
                                             <td class="text-center"><img class="img-thumbnail rounded"
                                                     src="{{ asset('storage/' . $user->image) }}" alt=""></td>
                                         @endif
-                                        <td class="text-center">{{ $user->name }}</td>
+                                        <td class="text-center">{{ $user->name }} &nbsp; <p class="text-info d-inline">
+                                                ({{ $user->gender }})</p>
+                                        </td>
                                         <td class="text-center">{{ $user->email }}</td>
                                         <td class="text-center">{{ $user->phone }}</td>
                                         <td class="text-center">{{ $user->address }}</td>
-                                        <td class="text-center">{{ $user->gender }}</td>
                                         <td class="">
                                             <div class="table-data-feature">
-                                                <select class="form-select px-2 userchangeRole">
+                                                <select class="form-select  userchangeRole mx-1">
                                                     <option value="admin">Admin</option>
                                                     <option value="user" selected>User</option>
                                                 </select>
+
                                                 {{-- <form action="{{ route('adminLists#delete', $admin->id) }}"
                                                         method="get">
                                                         <button class="item ms-1" data-toggle="tooltip" data-placement="top"
@@ -87,6 +89,19 @@
                                                     </form> --}}
                                             </div>
                                         </td>
+                                        <td class="">
+                                            <div class="table-data-feature">
+                                                <select class="form-select userSuspend">
+                                                    <option value="1"
+                                                        @if ($user->suspend == 1) selected @endif>
+                                                        Suspend</option>
+                                                    <option value="0"
+                                                        @if ($user->suspend == 0) selected @endif>
+                                                        Unsuspend</option>
+                                                </select>
+                                            </div>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                                 <tr class="spacer"></tr>
@@ -124,6 +139,29 @@
                         if (response.status == 'true') {
                             location.reload();
                         }
+                    }
+                })
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.userSuspend').on('change', function() {
+                $suspend = $(this).val();
+                $id = $(this).closest('.userData').find('#changeId').val();
+                // console.log($role);
+                $.ajax({
+                    type: 'get',
+                    url: '/admin/ajax/userSuspend',
+                    data: {
+                        'id': $id,
+                        'suspend': $suspend
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        // if (response.status == 'true') {
+                        //     location.reload();
+                        // }
                     }
                 })
             })

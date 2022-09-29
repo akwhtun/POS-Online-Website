@@ -12,6 +12,14 @@
                     </div>
                 </div>
             @endif
+            @if (session('suspended'))
+                <div class="alert-message">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <p>{{ session('suspended') }}</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
             @error('terms')
                 <small class="text-danger">{{ $message }}</small>
             @enderror

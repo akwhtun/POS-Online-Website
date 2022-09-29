@@ -13,9 +13,12 @@ use App\Models\Contact;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', 'loginPage');
+
 
 Route::middleware(['auth_admin'])->group(function () {
+
+    Route::redirect('/', 'loginPage');
+
     //login, register
     Route::get('/loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
 
@@ -74,6 +77,9 @@ Route::middleware(['auth'])->group(function () {
 
             //user change role
             Route::get('ajax/userChangeRole', [AdminController::class, 'userChangeRole'])->name('ajax#userChangeRole');
+
+            //user suspend
+            Route::get('ajax/userSuspend', [AdminController::class, 'userSuspend'])->name('ajax#userSuspend');
 
             //user contact
             Route::get('userContact/list', [AdminController::class, 'userContact'])->name('userContact#list');
@@ -168,5 +174,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('contactPage', [ContactController::class, 'contactPage'])->name('user#contact');
 
         Route::post('contactSuccess', [ContactController::class, 'contactSuccess'])->name('usre#contactSuccess');
+
+        // pagination
+        // Route::get('homePage/fetchPage', [UserController::class, 'fetchPage']);
     });
 });

@@ -249,8 +249,8 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
-@yield('ajaxContent');
-@yield('carousel');
+@yield('ajaxContent')
+@yield('carousel')
 @yield('script')
 
 </html>

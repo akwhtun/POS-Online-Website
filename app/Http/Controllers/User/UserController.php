@@ -16,23 +16,30 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     //home page
-    public function homePage()
+    public function homePage(Request $request)
     {
         $pizzas = Product::orderBy('created_at', 'desc')->paginate(6);
         $categories = Category::get();
         $cart = Cart::where('user_id', Auth::user()->id)->get();
         $history = Order::where('user_id', Auth::user()->id)->get();
+
+        if ($request->ajax()) {
+            $pizzas = Product::orderBy('created_at', 'desc')->paginate(6);
+            return view('user.home_data', compact('pizzas'))->render();
+        }
         return view('user.home', compact('categories', 'pizzas', 'cart', 'history'));
     }
 
     //filter category
     public function filter($categoryId)
     {
-        $pizzas = Product::where('category_id', $categoryId)->orderBy('id', 'desc')->get();
+        $pizzas = Product::where('category_id', $categoryId)->orderBy('id', 'desc')->paginate(6);
         $categories = Category::get();
         $cart = Cart::where('user_id', Auth::user()->id)->get();
-        return view('user.home', compact('categories', 'pizzas', 'cart'));
+        $history = Order::where('user_id', Auth::user()->id)->get();
+        return view('user.home', compact('categories', 'pizzas', 'cart', 'history'));
     }
 
     //change password page

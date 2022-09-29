@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
     //login page
     public function loginPage()
     {
@@ -21,6 +22,10 @@ class AuthController extends Controller
     //dashboard
     public function dashboard()
     {
+        if (Auth::user()->suspend == 1) {
+            Auth::logout();
+            return back()->with(['suspended' => 'Your account is suspended! ⚔']);
+        }
         if (Auth::user()->role == 'admin') {
             return redirect()->route('category#list');
         } else {

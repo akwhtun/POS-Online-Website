@@ -13,7 +13,7 @@ class OrderController extends Controller
     {
         $orderList = Order::select('orders.*', 'users.name as user_name')
             ->leftJoin('users', 'users.id', 'orders.user_id')
-            ->paginate(5);
+            ->orderBy('id', 'desc')->paginate(5);
         return view('admin.orderList.list', compact('orderList'));
     }
 

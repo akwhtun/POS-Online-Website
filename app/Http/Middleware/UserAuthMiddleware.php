@@ -17,6 +17,7 @@ class UserAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // dd(Auth::user()->suspend);
         if (!empty(Auth::user())) {
             if (url()->current() == route('auth#loginPage') || url()->current() == route('auth#registerPage')) {
                 return back();
@@ -24,6 +25,9 @@ class UserAuthMiddleware
             if (Auth::user()->role != 'user') {
                 return back();
             }
+            // if () {
+            //     return back();
+            // }
             return $next($request);
         }
         return $next($request);

@@ -123,6 +123,18 @@ class AdminController extends Controller
         return response()->json($response, 200);
     }
 
+    //userSuspend
+    public function userSuspend(Request $request)
+    {
+        User::where('id', $request->id)->update(
+            ['suspend' => $request->suspend]
+        );
+        $response = [
+            'message' => 'success',
+            'status' => 'true'
+        ];
+        return response()->json($response, 200);
+    }
 
     //user contacts
     public function userContact()

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('address');
             $table->string('role', 15)->default('user');
+            $table->integer('suspend')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
