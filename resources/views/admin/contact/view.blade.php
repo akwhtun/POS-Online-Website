@@ -25,7 +25,7 @@
                                         <span>{{ $data->email }}</span>
                                     </p>
                                 </div>
-                                <p class="mt-4 ms-4">
+                                <p class="mt-4 ms-2">
                                     <i class="fas fa-paragraph fs-5 me-1"></i>Message :
                                     <span>{{ $data->message }}</span>
                                 </p>
