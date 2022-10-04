@@ -3,12 +3,6 @@
 /public/hot
 /public/storage
 /public/fontawesome
-/public/admin
-/public/user
-/public/css
-/public/js
-/public/jQuery
-/public/owl
 /storage/*.key
 /vendor
 .env
