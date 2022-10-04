@@ -1,0 +1,25 @@
+GET http://localhost:8000/api/categories/getList
+###
+GET http://localhost:8000/api/categories/get/2
+###
+POST http://localhost:8000/api/categories/create
+Content-Type: application/json
+
+{
+    "name" : "Sea Food"
+}
+###
+POST http://localhost:8000/api/categories/delete
+Content-Type: application/json
+
+{
+    "id" : 11
+}
+###
+POST http://localhost:8000/api/categories/update
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "name" : "pizza update"
+}
