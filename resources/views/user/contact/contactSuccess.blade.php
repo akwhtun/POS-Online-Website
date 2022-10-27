@@ -8,7 +8,7 @@
     </a>
 @endsection
 @section('content')
-    <div class="orderMessage col-7 mx-auto">
+    <div class="orderMessage col-lg-7 col-12 mx-auto">
         <div class="modal modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-success">Contact Success</h5>

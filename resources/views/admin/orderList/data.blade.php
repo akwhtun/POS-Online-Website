@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div
-                class=" col-7 mx-auto m-0 p-0 card border border-4 rounded shadow-sm @if ($order[0]->status == 0) border-warning
+                class=" col-lg-7 col-12 mx-auto m-0 p-0 card border border-4 rounded shadow-sm @if ($order[0]->status == 0) border-warning
             @elseif($order[0]->status == 1)
                 border-success
             @else
@@ -26,7 +26,7 @@
                     <i class="fas fa-clipboard me-2"></i> Order Info
                 </p>
                 <div class="d-flex pt-2">
-                    <div class="img col-5">
+                    <div class="img col-lg-5 d-lg-block d-none">
                         @if ($data[0]->user_image != null)
                             <img class="card-img-top rounded" style="width: 240px; height:230px"
                                 src="{{ asset('storage/' . $data[0]->user_image) }}" alt="">
@@ -40,7 +40,7 @@
                             @endif
                         @endif
                     </div>
-                    <div class="col-7 text-dark">
+                    <div class="col-lg-7 col-12 text-dark">
                         <div class="py-2 my-2 d-flex">
                             <div style="width: 140px;">
                                 <i class=" fs-5 fas fa-user"></i>
@@ -69,29 +69,10 @@
                             </div>
                             <p class="d-inline me-1">{{ $data[0]->created_at->format('F-j-m') }}</p>
                         </div>
-                        {{-- <div class="py-2 my-2">
-                            <i class=" fs-5 fas fa-barcode"></i>
-                            <span class="w-25 bg-success">Order Code : </span>
-                            <p class="d-inline me-1">{{ $data[0]->order_code }}</p>
-                        </div>
-                        <div class="py-2 my-2">
-                            <i class=" fs-5 fas fa-money-bill-wave"></i>
-                            <span class="w-25 bg-success">Total Price : </span>
-                            <p class="d-inline me-1">{{ $order[0]->total_price }} kyats (Include Delivery Charges)</p>
-                        </div>
-                        <div class="py-2 my-2">
-                            <i class=" fs-5 fas fa-money-bill-wave"></i>
-                            <span class="w-25 bg-success">Total Price : </span>
-                            <p class="d-inline me-2">{{ $order[0]->total_price }} kyats</p>
-                        </div> --}}
-                        {{-- <div class="py-2 my-1"><i class=" fs-5 fas fa-money-bill-wave"></i>
-                            <span>Total Price : </span>
-                            <p class="d-inline me-2">{{ $order[0]->total_price }} kyats</p>
-                        </div> --}}
                     </div>
                 </div>
                 <div class="mt-2 py-3 d-flex">
-                    <div class="col-4 ms-2 m-0 p-0">
+                    <div class="col-4  ms-2 m-0 p-0">
                         <p class="d-inline">Order Status : </p>
                         @if ($order[0]->status == 0)
                             <span><i class="fas fa-hourglass-half text-warning"></i> Pending..</span>

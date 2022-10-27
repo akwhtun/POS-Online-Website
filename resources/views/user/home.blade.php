@@ -44,13 +44,11 @@
                 <!-- Size End -->
             </div>
             <!-- Shop Sidebar End -->
-
-
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-8">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4 pt-lg-0 pt-3">
                             <div>
                                 <a href="{{ route('cart#history') }}" class="btn btn-dark text-white position-relative">
                                     History <i class="fas fa-history"></i>

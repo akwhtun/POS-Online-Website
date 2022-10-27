@@ -10,7 +10,7 @@
                         <a href="{{ route('category#list') }}"><button class="btn bg-dark text-white my-3">List</button></a>
                     </div>
                 </div>
-                <div class="col-lg-6 offset-3">
+                <div class="col-lg-6 col-md-10 col-12 mx-auto">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">

@@ -33,13 +33,6 @@
                 <div class="h-100 bg-light p-30">
                     <h3>{{ $pizza->name }}</h3>
                     <div class="d-flex mb-3">
-                        {{-- <div class="text-primary mr-2">
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star-half-alt"></small>
-                            <small class="far fa-star"></small>
-                        </div> --}}
                         <p class="pt-1">{{ $pizza->view_count }} <i class="fas fa-eye ms-1"></i></p>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">{{ $pizza->price }} kyats</h3>
@@ -106,12 +99,7 @@
                                 <div class="product-action">
                                     <a class="btn btn-outline-dark btn-square" id="addCartAnotherBtn"><i
                                             class="fa fa-shopping-cart"></i></a>
-                                    {{-- <a class="btn btn-outline-dark btn-square" href=""><i
-                                            class="far fa-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
-                                            class="fa fa-sync-alt"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
-                                            class="fa fa-search"></i></a> --}}
+
                                     <a href="{{ route('pizza#detail', $pizzaList->id) }}"
                                         class="btn btn-outline-dark btn-square">
                                         <i class="fas fa-info"></i>
@@ -126,11 +114,7 @@
                                     {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-1">
-                                    {{-- <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small> --}}
+
                                     <small> {{ $pizzaList->view_count }} <i class="fas fa-eye"></i></small>
                                 </div>
                             </div>

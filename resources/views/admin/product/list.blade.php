@@ -35,7 +35,7 @@
                             <p style="font-size: 20px;">Search For &nbsp;<span
                                     class="text-danger">{{ request('searchKey') }}</span></p>
                         </div>
-                        <form method="get" class="col-4 offset-4">
+                        <form method="get" class="col-lg-4 col-10 offset-lg-4">
                             <div class="input-group">
                                 <input type="search" name="searchKey" class="form-control rounded"
                                     value="{{ request('searchKey') }}" placeholder="Search...">
@@ -44,7 +44,7 @@
                         </form>
                     </div>
                     @if (session('pizzaCreateSuccess'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 col-12 offset-lg-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('pizzaCreateSuccess') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -53,7 +53,7 @@
                         </div>
                     @endif
                     @if (session('pizzaDeleteSuccess'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 offset-lg-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('pizzaDeleteSuccess') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -62,7 +62,7 @@
                         </div>
                     @endif
                     @if (session('pizzaUpdateSuccess'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 offset-lg-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('pizzaUpdateSuccess') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"

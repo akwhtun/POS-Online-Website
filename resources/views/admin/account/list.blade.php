@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     @if (session('deleteAdminSuccess'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 col-12 offset-lg-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('deleteAdminSuccess') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"

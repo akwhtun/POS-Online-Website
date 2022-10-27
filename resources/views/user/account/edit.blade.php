@@ -10,8 +10,8 @@
 @section('content')
     <div class="main-content">
         <div class="section__content section__content--p30">
-            <div class="container-fluid">
-                <div class="col-lg-8 offset-2">
+            <div class="container">
+                <div class="col-lg-8 col-12 mx-auto offset-2">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
@@ -46,7 +46,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-5 mx-auto col-8">
+                                <div class="mt-5 mx-auto col-lg-8 col-12">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}"
                                         class="form-control @error('name') is-invalid @enderror">
@@ -56,7 +56,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" value="{{ old('email', Auth::user()->email) }}"
                                         class="form-control @error('email') is-invalid @enderror">
@@ -66,7 +66,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <label for="phone">Phone</label>
                                     <input type="text" name="phone" value="{{ old('phone', Auth::user()->phone) }}"
                                         class="form-control @error('phone') is-invalid @enderror">
@@ -76,7 +76,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <label for="gender">Gender</label>
                                     <select name="gender" class="form-select @error('gender') is-invalid @enderror">
                                         <option value="">Choose Gender</option>
@@ -91,7 +91,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <label for="address">Address</label>
                                     <textarea name="address" cols="15" rows="7" class="form-control @error('address') is-invalid @enderror">{{ old('address', Auth::user()->address) }}
                                     </textarea>
@@ -101,12 +101,12 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <label for="role">Role</label>
                                     <input type="text" name="role" value="{{ Auth::user()->role }}"
                                         class="form-control" readonly>
                                 </div>
-                                <div class="mt-3 mx-auto col-8">
+                                <div class="mt-3 mx-auto col-lg-8 col-12">
                                     <button type="submit" class="btn btn-dark w-100 py-2">
                                         Update Profile <i class="fas fa-arrow-circle-right"></i>
                                     </button>

@@ -41,36 +41,45 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="position: relative">
         <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
+        <aside class="menu-sidebar d-lg-block d-flex col-lg-0 w-100">
             <div class="logo">
                 <a href="{{ route('category#list') }}">
                     <img src="{{ asset('logo.png') }}" alt="POS" style="width: 120px">
                 </a>
             </div>
-            <div class="menu-sidebar__content js-scrollbar1">
+            {{-- <div>
+                text-end
+                d-flex w-100 text-center mt-3
+            </div> --}}
+            <div class="menu-sidebar__content js-scrollbar1 w-100">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
+                    <ul class="list-unstyled navbar__list d-lg-block d-flex text-lg-start text-center mt-lg-4"
+                        style="transform: translateY(-20px)">
                         <li>
                             <a href="{{ route('category#list') }}">
-                                <i class="fas fa-chart-bar"></i>Category</a>
+                                <i class="fs-5 fas fa-chart-bar"></i><span
+                                    class="d-lg-inline d-none">Category</span></a>
                         </li>
                         <li>
                             <a href="{{ route('pizza#list') }}">
-                                <i class="fab fa-product-hunt"></i>Product</a>
+                                <i class="fs-5 fab fa-product-hunt"></i><span
+                                    class="d-lg-inline d-none">Product</span></a>
                         </li>
                         <li>
                             <a href="{{ route('order#list') }}">
-                                <i class="fas fa-list-alt"></i>Order List</a>
+                                <i class="fs-5 fas fa-list-alt"></i><span class="d-lg-inline d-none">Order
+                                    List</span></a>
                         </li>
                         <li>
                             <a href="{{ route('userLists#view') }}">
-                                <i class="fas fa-users"></i>Users</a>
+                                <i class="fs-5 fas fa-users"></i><span class="d-lg-inline d-none">Users</span></a>
                         </li>
                         <li>
                             <a href="{{ route('userContact#list') }}">
-                                <i class="fas fa-users-cog"></i>Users Contact</a>
+                                <i class="fs-5 fas fa-users-cog"></i><span class="d-lg-inline d-none">Users
+                                    Contact</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -88,55 +97,12 @@
                             <div>
                                 <p class="text-dark" style="font-size: 25px;">Admin Dashboard Panel</p>
                             </div>
-                            {{-- <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search"
-                                    placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form> --}}
                             <div class="header-button">
-                                {{-- <div class="noti-wrap">
+                                <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
+                                        <i class=""></i>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image" style="width:50px; height: 50px;">
@@ -250,6 +216,14 @@
     <!-- Main JS-->
     <script src="{{ asset('admin/js/main.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.bar').on('click', function() {
+                $('.lists').slideToggle(400);
+            })
+        })
+    </script>
 
 </body>
 

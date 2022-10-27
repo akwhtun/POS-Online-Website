@@ -20,21 +20,8 @@
                             <i class="fas fa-database"></i><span class="ms-2">{{ $data->total() }}</span>
                         </div>
                     </div>
-                    {{-- <div class="row d-flex align-items-center">
-                        <div class="col-4">
-                            <p style="font-size: 25px;">Search For &nbsp;<span
-                                    class="text-danger">{{ request('searchKey') }}</span></p>
-                        </div>
-                        <form method="get" class="col-4 offset-4">
-                            <div class="input-group">
-                                <input type="search" name="searchKey" class="form-control rounded"
-                                    value="{{ request('searchKey') }}" placeholder="Enter search key">
-                                <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div> --}}
                     @if (session('deleteUserContact'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 offset-lg-8 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('deleteUserContact') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"

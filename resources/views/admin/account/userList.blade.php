@@ -21,19 +21,6 @@
                                 {{ $users->total() }}</span>
                         </div>
                     </div>
-                    {{-- <div class="row d-flex align-items-center">
-                        <div class="col-4">
-                            <p style="font-size: 25px;">Search For &nbsp;<span
-                                    class="text-danger">{{ request('searchKey') }}</span></p>
-                        </div>
-                        <form method="get" class="col-4 offset-4">
-                            <div class="input-group">
-                                <input type="search" name="searchKey" class="form-control rounded"
-                                    value="{{ request('searchKey') }}" placeholder="Search...">
-                                <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div> --}}
                     <div class="table-responsive table-responsive-data2">
                         <table class="table table-data2">
                             <thead>
@@ -80,13 +67,6 @@
                                                     <option value="user" selected>User</option>
                                                 </select>
 
-                                                {{-- <form action="{{ route('adminLists#delete', $admin->id) }}"
-                                                        method="get">
-                                                        <button class="item ms-1" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete" type="submit">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
-                                                    </form> --}}
                                             </div>
                                         </td>
                                         <td class="">

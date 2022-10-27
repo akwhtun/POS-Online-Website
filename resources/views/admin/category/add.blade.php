@@ -6,11 +6,11 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-3 offset-8">
+                    <div class="col-lg-3 col-md-6 offset-lg-8 col-12 mx-auto">
                         <a href="{{ route('category#list') }}"><button class="btn bg-dark text-white my-3">List</button></a>
                     </div>
                 </div>
-                <div class="col-lg-6 offset-3">
+                <div class="col-lg-6 offset-lg-3 col-12 mx-auto">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">

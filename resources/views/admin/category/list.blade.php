@@ -35,7 +35,7 @@
                             <p style="font-size: 25px;">Search For &nbsp;<span
                                     class="text-danger">{{ request('searchKey') }}</span></p>
                         </div>
-                        <form method="get" class="col-4 offset-4">
+                        <form method="get" class="col-lg-4 offset-lg-4 col-9">
                             <div class="input-group">
                                 <input type="search" name="searchKey" class="form-control rounded"
                                     value="{{ request('searchKey') }}" placeholder="Enter search key">
@@ -44,7 +44,7 @@
                         </form>
                     </div>
                     @if (session('deleteSuccess'))
-                        <div class="alert-message col-4 offset-8 mt-2">
+                        <div class="alert-message col-lg-4 offset-lg-8 col-12 mt-2">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <p>{{ session('deleteSuccess') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"

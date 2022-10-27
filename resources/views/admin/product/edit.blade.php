@@ -5,7 +5,7 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
-                <div class="col-lg-9 mx-auto">
+                <div class="col-lg-9 col-md-11 col-12 mx-auto">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
@@ -15,21 +15,14 @@
                             <form action="{{ route('pizza#update') }}" method="POST"
                                 class="row d-flex justify-content-around" enctype="multipart/form-data">
                                 @csrf
-                                <div class="col-5">
-                                    <div class="img mx-auto mt-2" style="height:320px ">
+                                <div class="col-lg-5 col-12">
+                                    <div class="img mx-auto mt-2" style="width:300px; height:320px ">
                                         <img src="{{ asset('storage/pizza/' . $product->image) }}"
                                             class="img-thumbnail w-100 h-100 rounded">
                                     </div>
                                     <input type="file" name="pizzaPhoto" class="form-control mt-3">
-                                    <div class="mt-2">
-                                        <button id="payment-button" type="submit" class="btn btn-info btn-block">
-                                            <span id="payment-button-amount">Update</span>
-                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                            <i class="fas fa-arrow-circle-right"></i>
-                                        </button>
-                                    </div>
                                 </div>
-                                <div class="col-7">
+                                <div class="col-lg-7 col-12">
                                     <input type="hidden" name="productId" value="{{ $product->id }}">
                                     <div class="form-group">
                                         <label class="control-label mb-1">Pizza Name</label>
@@ -106,6 +99,13 @@
                                         <label class="control-label mb-1">Created</label>
                                         <input class="form-control" type="text" value="{{ $product->created_at }}"
                                             readonly>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button id="payment-button" type="submit" class="btn btn-info btn-block">
+                                            <span id="payment-button-amount">Update</span>
+                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                            <i class="fas fa-arrow-circle-right"></i>
+                                        </button>
                                     </div>
                                 </div>
 

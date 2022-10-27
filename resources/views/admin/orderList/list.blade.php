@@ -19,18 +19,6 @@
                             <i class="fas fa-database"></i><span class="ms-2 listCount">{{ count($orderList) }}</span>
                         </div>
                         <div class="table-data__tool-right">
-                            {{-- <div class="dropdown open">
-                                <button class="btn btn-dark dropdown-toggle" type="button" id="triggerId"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Choose Status
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" class="all">All</button>
-                                    <button class="dropdown-item" class="all">Pending</button>
-                                    <button class="dropdown-item" class="all">Success</button>
-                                    <button class="dropdown-item" class="all">Reject</button>
-                                </div>
-                            </div> --}}
                             <select id="status" class=" form-select bg-dark text-white">
                                 <option value="">All</option>
                                 <option value="0">Pending</option>
@@ -40,17 +28,6 @@
                         </div>
                     </div>
                     <div class="row d-flex align-items-center">
-                        {{-- <div class="col-4">
-                            <p style="font-size: 25px;">Search For &nbsp;<span
-                                    class="text-danger">{{ request('searchKey') }}</span></p>
-                        </div>
-                        <form method="get" class="col-4 offset-4">
-                            <div class="input-group">
-                                <input type="search" name="searchKey" class="form-control rounded"
-                                    value="{{ request('searchKey') }}" placeholder="Search....">
-                                <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form> --}}
                     </div>
                     <div class="table-responsive table-responsive-data2">
                         @if (count($orderList) != 0)

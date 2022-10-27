@@ -11,7 +11,7 @@
     <!-- Cart Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
-            <div class="col-lg-8 table-responsive mb-5 offset-2">
+            <div class="col-lg-8 mx-auto col-12 table-responsive mb-5">
                 <table class="table table-light table-borderless table-hover text-center mb-0">
                     <thead class="thead-dark">
                         <tr>

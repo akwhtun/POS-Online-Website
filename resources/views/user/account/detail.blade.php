@@ -11,7 +11,7 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             @if (session('updateSuccess'))
-                <div class="alert-message col-lg-6 offset-3">
+                <div class="alert-message col-lg-6 mx-auto offset-3">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <p class="m-0 p-0">{{ session('updateSuccess') }}</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -19,7 +19,7 @@
                 </div>
             @endif
             <div class="container-fluid">
-                <div class="col-lg-6 mx-auto">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
                     <div class="card p-3">
                         <div class="card-body">
                             <div class="card-title">
@@ -28,7 +28,7 @@
                             <hr>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-lg-6 col-md-8 col-12 mx-auto text-lg-start text-center">
                                     <div class="image" style="height:300px">
                                         @if (Auth::user()->image == null)
                                             @if (Auth::user()->gender == 'Male')
@@ -48,7 +48,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-lg-6 col-md-8 col-12 mx-auto text-start">
                                     <div class="text-dark fs-5">
                                         <p class="mt-1" style="text-transform: capitalize"> <i
                                                 class="fas fa-user me-2"></i> {{ Auth::user()->name }} &nbsp;

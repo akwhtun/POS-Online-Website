@@ -5,7 +5,7 @@
     <div class="main-content">
         <div>
             <div class="container-fluid">
-                <div class="col-lg-6 offset-3">
+                <div class="col-lg-8 col-md-10 col-12 mx-auto">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title px-3">

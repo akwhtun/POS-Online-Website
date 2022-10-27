@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="col-8 mx-auto px-3 py-2">
+    <div class="col-lg-6 col-md-8 col-12 mx-auto px-3 py-2">
         <div>
             <h1 class="text-center">Need support?</h2>
                 <form action="{{ route('usre#contactSuccess') }}" method="POST">
@@ -52,18 +52,18 @@
                             <i class="fas fa-running"></i> You can also contact us on
                         </p>
                         <div class="phone">
-                            <i class="fs-5 me-1 fas fa-phone"></i>
+                            <i class="fs-5 me-1 mt-1 fas fa-phone"></i>
                             <span>Phone : </span>
                             <span>09-891082064</span>
 
                         </div>
                         <div class="email">
-                            <i class="fs-5 me-1 fas fa-envelope"></i>
+                            <i class="fs-5 me-1 mt-1 fas fa-envelope"></i>
                             <span>Email : </span>
                             <span>akwhtun@gmail.com</span>
                         </div>
                         <div class="location">
-                            <i class="fs-5 me-1 fas fa-map-marked"></i>
+                            <i class="fs-5 me-1 mt-1 fas fa-map-marked"></i>
                             <span>Location : </span>
                             <span>Mandalay,Myingyan</span>
                         </div>

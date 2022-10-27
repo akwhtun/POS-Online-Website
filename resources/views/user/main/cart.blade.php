@@ -11,7 +11,7 @@
     <!-- Cart Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
-            <div class="col-lg-8 table-responsive mb-5">
+            <div class="col-lg-8 col-12 table-responsive mb-5">
                 <table class="table table-light table-borderless table-hover text-center mb-0">
                     <thead class="thead-dark">
                         <tr>
@@ -25,8 +25,8 @@
                     <tbody class="align-middle dataRow">
                         @foreach ($list as $l)
                             <tr class="orderItem">
-                                <td class="align-middle d-flex flex-wrap">
-                                    <img class="ms-5 me-3 img-thumbnail rounded"
+                                <td class="align-middle d-flex flex-wrap justify-content-start align-items-center">
+                                    <img class="ms-md-5 me-md-3 ms-3 img-thumbnail rounded"
                                         src="{{ asset('storage/pizza/' . $l->image) }}" alt="" style="width: 50px;">
                                     {{ $l->name }}
 

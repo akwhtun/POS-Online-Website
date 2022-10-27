@@ -5,7 +5,7 @@
     <div class="main-content">
         <div>
             <div class="container-fluid">
-                <div class="col-lg-9 mx-auto">
+                <div class="col-lg-9 col-md-11 col-12 mx-auto">
                     <div class="card border border-4 border-light">
                         <div class="card-body">
                             <div class="card-title px-3">
@@ -16,12 +16,6 @@
                             </div>
                             <hr class="text-dark bg-dark" style="height: 3px;">
                             <div class="row">
-                                {{-- <div class="col-5">
-                                    <div class="img" style="width: 350px;height:320px;">
-                                        <img src="{{ asset('storage/pizza/' . $product->image) }}"
-                                            class="rounded img-thumbnail w-100 h-100" alt="">
-                                    </div>
-                                </div> --}}
                                 <p class=" bg-light shadow-sm py-2 col-4 mx-auto text-center text-danger"><i
                                         class=" fs-5 fas fa-sticky-note"></i>
                                     &nbsp;{{ $product->name }}</p>
@@ -29,10 +23,11 @@
 
                                     <span class="text-center rounded bg-light shadow-sm py-1 col-3"><i
                                             class=" fs-5 fas fa-money-bill-wave-alt text-secondary"></i>
-                                        &nbsp;{{ $product->price }} Kyats</span>
+                                        &nbsp;{{ $product->price }} <span class="d-none d-lg-inline">Kyats</span></span>
                                     <span class="text-center rounded bg-light shadow-sm py-1 col-2"><i
                                             class=" fs-5 fas fa-clock text-warning"></i>
-                                        &nbsp;{{ $product->waiting_time }} mins</span>
+                                        &nbsp;{{ $product->waiting_time }} <span
+                                            class="d-none d-lg-inline">mins</span></span>
 
                                     <span class="text-center rounded bg-light shadow-sm py-1 col-2"><i
                                             class=" fs-5 fas fa-eye text-primary"></i>
@@ -44,18 +39,19 @@
                                 </div>
                                 <div class="d-flex mt-4 flex-wrap">
 
-                                    <p class="img col-5" style="width: 350px;height:320px;">
+                                    <p class="img col-lg-5 col-12" style="width: 350px;height:320px;">
                                         <img src="{{ asset('storage/pizza/' . $product->image) }}"
                                             class="rounded img-thumbnail w-100 h-100" alt="">
                                     </p>
-                                    <p class="col-7" style="font-size:17px;text-indent: 25px">
+                                    <p class="col-lg-7 col-12" style="font-size:17px;text-indent: 25px">
 
                                         {{ $product->description }}
                                     </p>
 
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <p class="fs-5 col-4 bg-light shadow-sm py-2"><i class="fas fa-user-clock"></i>
+                                    <p class="fs-5 col-lg-4 col-12 bg-light shadow-sm py-2"><i
+                                            class="fas fa-user-clock"></i>
                                         &nbsp;
                                         {{ $product->created_at->format('j-F-y') }}</p>
                                 </div>
